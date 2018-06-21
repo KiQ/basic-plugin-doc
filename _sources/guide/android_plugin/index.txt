@@ -1,0 +1,13 @@
+
+==============================
+Android Plugin 概要
+==============================
+
+この章では、 AndroidPlugin の概要や各機能について説明します。
+
+.. toctree::
+   :maxdepth: 1
+
+   guide
+   android_purchase
+

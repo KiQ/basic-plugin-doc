@@ -1,0 +1,36 @@
+.. include:: ../../definition.txt
+
+========================================
+タイマー機能
+========================================
+
+|defTimer| とは、時間経過を管理する機能です。
+
+例えば、ポイント0～60までをカウント間隔10秒でカウントしていき、10分(600秒)後にカウントがポイントが最大になるという表現ができます。
+
+タイマーの開始時と終了時には |defContent| を付与することもできます。
+これを用いて、「キャラクターA」を使用した時点から1時間経過しないと再使用できなくする機能や、5時間経過後に「キャラクターB」を付与するといったことができます。
+
+タイマーの設定例は :doc:`../../master/timer` を参照してください。
+
+なお、タイマーは以下のライフサイクルをもちます。
+
+1. :doc:`../../api/basic_plugin/timer/timer_create` で作成されたタイマーはカウント状態(RUNNING)となり、カウント用のポイントを持ちます。タイマー開始時に |defContent| を付与する設定がされていた場合、プレイヤーに直接付与を行います、
+2. タイマーは、ポイントが :doc:`../../master/timer` で定義された最大値に到達するまで、カウントを行います
+3. :doc:`../../api/basic_plugin/timer/timer_get` (または :doc:`../../api/basic_plugin/timer/timer_get_list` )でポイントが最大値に達したことを確認します
+4. :doc:`../../api/basic_plugin/timer/timer_close` でタイマーを終了させます(FINISHED)。タイマー終了時に |defContent| を付与する設定がされていた場合、プレイヤーに直接付与を行います。
+5. 不要となったタイマーを :doc:`../../api/basic_plugin/timer/timer_delete` で削除します
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,15
+
+    :doc:`../../api/basic_plugin/timer/timer_create`,タイマーを新規で作成します
+    :doc:`../../api/basic_plugin/timer/timer_close`,リクエストしたタイマーを終了させます
+    :doc:`../../api/basic_plugin/timer/timer_delete`,リクエストしたタイマーを削除します
+    :doc:`../../api/basic_plugin/timer/timer_get`,リクエストしたタイマーの状態を取得します
+    :doc:`../../api/basic_plugin/timer/timer_get_list`,現在存在しているタイマー一覧を取得します
+    :doc:`../../api/basic_plugin/timer/timer_modify_by_content`,特定のコンテンツ効果をタイマーに適応させ状態を変動させます

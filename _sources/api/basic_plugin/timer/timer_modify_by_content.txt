@@ -1,0 +1,91 @@
+.. include:: ../../../definition.txt
+
+=======================
+timerModifyByContent
+=======================
+
+プレイヤー |defInventory| にある ``SYSTEM_EFFECT_TYPE`` を持った |defContent| を消費して、 |defTimer| のポイントを変更するAPIです。
+
+
+.. code-block:: js
+
+    timerModifyByContentRequest(TimerModifyByContentRequest) => TimerModifyByContentResult
+
+Requests
+==========
+
+* statusId (int)
+	ポイントを変更した |defTimer| の |defId|
+
+* inventoryId (int)
+	使用する |defContent| の |defInventory| の |defId|
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* updateTimer (:doc:`../../types/Timer`)
+	ポイントを変更した後の |defTimer| の状態
+
+* updateInventoryElement (list<:doc:`../../types/InventoryElement`>)
+	更新された |defInventory| のリスト
+
+	備考 : 更新が行われなかった場合、空のリストを返す
+
+* deleteInventoryElement (list<:doc:`../../types/InventoryElement`>)
+	削除された |defInventory| のリスト
+
+	備考 : 削除が行われなかった場合、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        statusId: 1,
+        inventoryId: 1000
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        updateTimer: {
+            statusId: 1,
+            configId: 100,
+            state: 'FINISHED'
+            point: 500,
+            lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+            countInterval: 100,
+            maxPoint: 500
+        },
+        updateInventoryElement: {
+            inventoryId: 1000,
+            contentId: 10,
+            contentType: 'type-01',
+            amount: 9,
+            description: 'Effects timer',
+            isPayment: false
+        }
+    }
+
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20700,不正な statusId がリクエストされました
+    20200,不正な inventoryId がリクエストされました
+    20705,効果を適用できませんでした. エラーメッセージを参照してください

@@ -1,0 +1,15 @@
+
+====================
+SploginPlugin API 仕様
+====================
+
+
+Login
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   login/splogin_login_get_nonce
+   login/splogin_login_get_uuid
+   login/splogin_login_login

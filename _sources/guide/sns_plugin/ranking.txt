@@ -1,0 +1,20 @@
+.. include:: ../../definition.txt
+
+==============================
+Ranking API
+==============================
+
+ランキング情報の取得機能を提供します。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/sns_plugin/ranking/sns_ranking_get_by_friends`,フレンドのID一覧を指定してランキング情報を取得します
+    :doc:`../../api/sns_plugin/ranking/sns_ranking_get_by_range`,開始位置と件数を指定してランキング情報を取得します
+    :doc:`../../api/sns_plugin/ranking/sns_ranking_get_by_window`,プレイヤーの前後のランキング情報を取得します
+

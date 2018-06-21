@@ -1,0 +1,75 @@
+.. include:: ../../../definition.txt
+
+====================
+accountRegisterFacebook
+====================
+
+Facebookアカウントとの連携を登録するAPIです。
+
+利用時は、端末上でFacebook認証を行い、アクセストークンを取得してください。
+
+.. code-block:: js
+
+    accountRegisterFacebook(AccountRegisterFacebookRequest ) => AccountRegisterFacebookResult 
+
+Requests
+==========
+
+* account (String)
+    SNS でのアカウント |defId|
+
+* accessToken (String)
+    Facebook API利用のためのアクセストークン
+
+* snsProfile (optional, String)
+    SNSでの表示名など。記録内容、書式についてはAPIでは規定しない。
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* errorCode (optional, int)
+    API失敗時のエラーコード
+
+* errorMessage (optional, String)
+    API失敗時のエラーメッセージ
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        account: '12345678',
+        accessToken: 'token12345678',
+        snsProfile: '{...}'
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true
+    }
+
+Errors FIXME 現物にあわせる
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        80001,指定されたSNS IDはすでに登録されています
+        80002,SNSサーバに接続できません
+        80003,SNSサーバでの認証に失敗しました
+        80007,指定されたSNS IDは停止中です。
+        80008,mst_twitter_conf、mst_facebook_confのマスタ設定がない
+
+

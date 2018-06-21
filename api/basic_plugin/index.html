@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API 仕様 &mdash; basic-plugin 0.1 ドキュメント</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/basicplugin_icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="basic-plugin 0.1 ドキュメント" href="../../index.html"/>
+        <link rel="up" title="API 仕様" href="../index.html"/>
+        <link rel="next" title="inventoryGet" href="inventory/inventory_get.html"/>
+        <link rel="prev" title="API 仕様" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> basic-plugin
+          
+
+          
+            
+            <img src="../../_static/basicplugin.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">概要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detail/index.html">詳細仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../master/index.html">マスタデータ設定仕様</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API 仕様</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#basicplugin">BasicPlugin</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="">API 仕様</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inventory">Inventory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gameinformation">GameInformation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exchange">Exchange</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gacha">Gacha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#present">Present</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loginbonus">LoginBonus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timer">Timer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#provider">Provider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage">Stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ranking">Ranking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#objectstorage">ObjectStorage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#snsplugin">SnsPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#splogin-plugin">Splogin_Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#androidplugin">AndroidPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#iosplugin">IosPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dmmplugin">DmmPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#data-type">Data Type</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">basic-plugin</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">API 仕様</a> &raquo;</li>
+      
+    <li>API 仕様</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/api/basic_plugin/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<h1>API 仕様<a class="headerlink" href="#api" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="inventory">
+<h2>Inventory<a class="headerlink" href="#inventory" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="inventory/inventory_get.html">inventoryGet</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gameinformation">
+<h2>GameInformation<a class="headerlink" href="#gameinformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="game_info/game_info_get.html">gameInfoGet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game_info/game_info_get_list.html">gameInfoGetList</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="exchange">
+<h2>Exchange<a class="headerlink" href="#exchange" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exchange/exchange.html">exchange</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gacha">
+<h2>Gacha<a class="headerlink" href="#gacha" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gacha/gacha_execute.html">gachaExecute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gacha/gacha_get_available_list.html">gachaGetAvailableList</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="present">
+<h2>Present<a class="headerlink" href="#present" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="present/present_open.html">presentOpen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="present/present_get_list.html">presentGetList</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="loginbonus">
+<h2>LoginBonus<a class="headerlink" href="#loginbonus" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="login_bonus/login_bonus_update.html">loginBonusUpdate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="login_bonus/login_bonus_get_list.html">loginBonusGetList</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="timer">
+<h2>Timer<a class="headerlink" href="#timer" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="timer/timer_create.html">timerCreate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer/timer_close.html">timerClose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer/timer_delete.html">timerDelete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer/timer_get.html">timerGet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer/timer_get_list.html">timerGetList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer/timer_modify_by_content.html">timerModifyByContent</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="provider">
+<h2>Provider<a class="headerlink" href="#provider" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="provider/provider_create.html">providerCreate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="provider/provider_update.html">providerUpdate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="provider/provider_delete.html">providerDelete</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="stage">
+<h2>Stage<a class="headerlink" href="#stage" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stage/stage_clear.html">stageClear</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ranking">
+<h2>Ranking<a class="headerlink" href="#ranking" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ranking/ranking_bonus_get_updatable_list.html">rankingBonusGetUpdatableList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking/ranking_bonus_update.html">rankingBonusUpdate</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="objectstorage">
+<h2>ObjectStorage<a class="headerlink" href="#objectstorage" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="object_storage/object_storage_add.html">objectStorageAdd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_storage/object_storage_set.html">objectStorageSet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_storage/object_storage_get.html">objectStorageGet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_storage/object_storage_delete.html">objectStorageDelete</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="inventory/inventory_get.html" class="btn btn-neutral float-right" title="inventoryGet" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="API 仕様" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright atomitech 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

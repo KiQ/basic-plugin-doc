@@ -1,0 +1,51 @@
+.. include:: ../definition.txt
+
+==============================
+|defSystemEffect| 一覧
+==============================
+
+BasicPluginでは、|defSystemEffect| 属性を設定することで |defContent| に効果を持たせることができます。
+
+以下に、定義済みの |defSystemEffect| を示します。
+
+タイマーに対する効果を持つ |defSystemEffect|
+==================================================
+
+タイマーに対する効果を持つ |defSystemEffect| が定義されたコンテンツが :doc:`../api/timer/timer_modify_by_content` によって消費されると、リクエストされたタイマーの値が変化します。
+
+タイマーに関しては :doc:`../guide/timer` を参照してください。
+
+タイマーが最大になるまでの時間短縮
+----------------------------------------
+
+以下に示す |defSystemEffect| が定義されたがコンテンツは、タイマーのポイントが最大になるまでの時間を短縮します。
+
+共通して、リクエストされたタイマーのポイントがすでに最大である場合は適応できません。
+
+* TIMER_EFFECT_MAXIMIZE_POINT
+    リクエストされたタイマーのポイントを最大まで増加させ、時間を 100 %短縮する効果。
+
+    .. csv-table::
+        :header: |defSystemEffect| 名, 短縮される時間
+        :widths: 10, 3
+
+        TIMER_EFFECT_MAXIMIZE_POINT,100%
+
+* TIMER_EFFECT_REDUCE_TIME_[10-90]_PERCENT
+    リクエストされたタイマーのポイントが最大になるまでの時間を 10から100 %短縮する効果。
+
+    |defSystemEffect| 名と、短縮される時間は以下を参照してください。
+
+    .. csv-table::
+        :header: |defSystemEffect| 名, 短縮する時間
+        :widths: 10, 3
+
+        TIMER_EFFECT_REDUCE_TIME_10_PERCENT,10%
+        TIMER_EFFECT_REDUCE_TIME_20_PERCENT,20%
+        TIMER_EFFECT_REDUCE_TIME_30_PERCENT,30%
+        TIMER_EFFECT_REDUCE_TIME_40_PERCENT,40%
+        TIMER_EFFECT_REDUCE_TIME_50_PERCENT,50%
+        TIMER_EFFECT_REDUCE_TIME_60_PERCENT,60%
+        TIMER_EFFECT_REDUCE_TIME_70_PERCENT,70%
+        TIMER_EFFECT_REDUCE_TIME_80_PERCENT,80%
+        TIMER_EFFECT_REDUCE_TIME_90_PERCENT,90%

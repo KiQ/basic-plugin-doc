@@ -1,0 +1,19 @@
+.. include:: ../../definition.txt
+
+==============================
+Connect API
+==============================
+
+SNSのプロフィールデータの登録・取得を提供します。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/sns_plugin/connect/sns_connect_set_data`,アカウント連携
+    :doc:`../../api/sns_plugin/connect/sns_connect_get_data`,Twitter アカウントを使った引継
+

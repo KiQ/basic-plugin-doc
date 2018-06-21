@@ -1,0 +1,27 @@
+.. include:: ../../definition.txt
+
+========================================
+LoginBonus
+========================================
+
+|defLoginBonus| とは、設定された切り替え時刻を基準にログインカウントを行っていき、カウント数に見合った |defContent| をプレイヤーにプレゼントとして付与する機能です。
+
+例えば、「05:00」以降にログインした場合カウント数を 1加算し、カウント数が10だった場合は「武器A」をプレゼントするといった表現ができます。
+
+ログインカウント数は設定された期間でリセットが行われ、設定の仕方で週間、月間といった表現もできます。
+
+また、プレゼントする |defContent| は複数種類にすることができます。
+
+カウントの切り替え時刻、ログインカウントの期間、プレゼントする |defContent| は |defLoginBonus| マスタで設定します。
+
+|defLoginBonus| マスタの設定例は :doc:`../../master/login_bonus` を参照してください。
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,15
+
+    :doc:`../../api/basic_plugin/login_bonus/login_bonus_update`,ログインカウントを行い、カウント数に見合った報酬を付与します
+    :doc:`../../api/basic_plugin/login_bonus/login_bonus_get_list`,現在期間中の |defLoginBonus| の内容を取得します

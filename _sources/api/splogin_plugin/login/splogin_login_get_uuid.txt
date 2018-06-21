@@ -1,0 +1,99 @@
+.. include:: ../../../definition.txt
+
+====================
+sploginGetUuid
+====================
+
+|defUser| 登録して |defUuid| を取得するAPIです。
+
+.. code-block:: js
+
+    sploginGetUuid(SploginGetUuidRequest) => SploginGetUuidResult 
+
+
+Requests
+==========
+
+* nonce(String)
+	入手した |defNonce|
+
+	備考 : 実行時の 取得は :doc:`splogin_login_get_nonce` を参照
+
+* signatureHash(String)
+    署名のハッシュ
+
+    ハッシュする文字列フォーマットは「nonce=(urlencodeした |defNonce| )&secret=(urlencodeした秘密鍵)」で、ハッシュアルゴリズムはSHA512
+    
+* deviceType(DeviceType)
+    |defDevice| |defType|
+    
+* platformUserId(String)
+    |defDevice| 利用者 |defId|
+
+* countryCode(String)
+    国コード
+    
+* currencyCode(String)
+    通貨コード
+
+
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* uuid(String)
+    生成した |defUuid| 
+
+* ccUuid(String)
+    生成した |defCcUuid| 
+
+* errorCode (int)
+    API失敗時のエラーコード
+
+* errorMessage (String)
+    API失敗時のエラーメッセージ
+
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        nonce:'0123456789',
+        signatureHash:'(ハッシュ値)',
+        deviceType:'IOS',
+        platformUserId:'1234567890-1234567890',
+        countryCode:'jp',
+        currencyCode:'jpy'
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        uuid:'1234567890-1234567890',
+        ccUuid:'abcdefabcd-abcdefabcd'
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    40000,有効な |defNonce| がありません
+    40001,署名検証に失敗しました
+    40004,国コードが不正
+    40005,通貨コードが不正

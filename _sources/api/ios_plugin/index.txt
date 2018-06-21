@@ -1,0 +1,13 @@
+
+====================
+IosPlugin API 仕様
+====================
+
+
+purchase
+====================
+
+.. toctree::
+   :maxdepth: 2
+   
+   purchase/iosPurchaseReceiptsSend

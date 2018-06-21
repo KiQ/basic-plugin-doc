@@ -1,0 +1,97 @@
+.. include:: ../definition.txt
+
+==============================
+|defContent| マスタ
+==============================
+
+|defContent| マスタでは、 BasicPlugin の基礎となるデータを定義します。
+
+プレイヤーに見える「お金」「アイテム」「キャラクター」「武器」「スタミナ」といったデータから、内部データになるような「キャラクターステータス」「フラグ」などを Content マスタとして定義します。
+
+以下にマスタの持つ属性値を記載します。
+
+Content マスタの持つ属性値
+==============================
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-128
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+* content_id
+    |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* content_type
+    |defContent| の種別
+
+    型 : 文字列
+
+    必須 : yes
+
+    使用可能文字： [ 0-9 ] [ a-z ] [ A-Z ] および [ _ ]
+
+    入力可能文字数 : 1-16
+
+* description
+    |defContent| の説明文
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-2048
+
+* content_class
+    Content の管理ルールの定義
+
+    型 : 文字列
+
+    必須 : yes
+
+    備考 : 定義可能な ``content_class`` については :doc:`content_class` を参照
+
+* max_amount
+    |defInventory| 内に所持できる最大値
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+    備考 : |defInventory| に追加、加算された際にこの値を超えると丸め処理が行われ、 ``max_amount`` を超えない
+
+* system_effect_type
+    Content を使用することで特殊なシステム効果を適用するための定義
+
+    型 : 文字列
+
+    必須 : no
+
+    備考 : 定義可能な ``system_effect_type`` については :doc:`system_effect_type` を参照
+
+--------------------------------------------------
+Content マスタのひな形
+--------------------------------------------------
+
+:download:`Download: Content マスタの設定例<./resources/mst_data/plain_example/content.xlsx>`
+
+----------------------------------------------------------------------
+Content マスタの設定例
+----------------------------------------------------------------------
+
+以下に「お金」「スタミナ」「課金コンテンツ(有償・無償)」「素材」「武器」「スタミナ回復アイテム」「キャラクター」を Content マスタに定義した例です。
+
+:download:`Download: Content マスタの設定例<./resources/mst_data/recipe/content/content.xlsx>`

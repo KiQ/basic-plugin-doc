@@ -1,0 +1,19 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+RegisterRankingRequest
+====================
+
+|defStageClear| でリクエスト StageClearRequest に含まれる RegisterRankingRequest の内容を格納します
+
+Parameters
+====================
+
+* rankingId (int)
+    |defRanking| の |defId|
+* score (int)
+    スコア
+* characterData (string)
+    キャラクタデータ

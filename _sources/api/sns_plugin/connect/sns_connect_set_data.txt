@@ -1,0 +1,73 @@
+.. include:: ../../../definition.txt
+
+==========
+accountSetData
+==========
+
+SNSのプロファイル情報を含む文字列を登録するAPIです。
+
+プロファイル情報の内容については本APIでは扱いません。
+
+クライアントから登録されたプロファイル情報は、そのままの形式でクライアントのリクエストで提供されます。
+
+
+.. code-block:: js
+
+    accountSetData(AccountSetDataRequest ) => AccountSetDataResult 
+
+Requests
+==========
+
+* profile (String)
+    SNSのプロファイル情報文字列
+
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* errorCode (optional, int)
+    API失敗時のエラーコード
+
+* errorMessage (optional, String)
+    API失敗時のエラーメッセージ
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        profile: '{...}'
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true
+    }
+
+
+Errors FIXME 現物にあわせる
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        80001,指定されたSNS IDはすでに登録されています
+        80002,SNSサーバに接続できません
+        80003,SNSサーバでの認証に失敗しました
+        80007,指定されたSNS IDは停止中です。
+        80008,mst_twitter_conf、mst_facebook_confのマスタ設定がない
+
+

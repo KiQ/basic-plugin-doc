@@ -1,0 +1,73 @@
+.. include:: ../../../definition.txt
+
+=======================
+sploginLogin
+=======================
+
+|defUuid| を指定してログインします。
+
+.. code-block:: js
+
+    sploginLogin(SploginLoginRequest) => SploginLoginResult 
+
+Requests
+==========
+
+* deviceType(DeviceType)
+    |defDevice| |defType|
+
+* uuid(String)
+    |defUuid| 
+
+Returns
+==========
+
+* success (bool)
+   APIの成否
+
+* kiqSessionId(String)
+   セッション |defId|
+   
+* userType(UserType)
+    |defUser|  |defType|
+
+* errorCode (int)
+    API失敗時のエラーコード
+
+* errorMessage (String)
+    API失敗時のエラーメッセージ
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        deviceType: 'IOS',
+        uuid:'1234567890-1234567890'
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        kiqSessionId:'0123456789abcedf0123456789',
+        userType:'NORMAL'
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    40002,有効な |defUuid| がありません
+    40003,BANされた |defUser| です

@@ -1,0 +1,100 @@
+.. include:: ../../definition.txt
+
+==============================
+AndroidPurchase
+==============================
+
+AndroidPluginでは、Android の決済 (Google Play IAB V3) に対応しています。
+
+端末で決済した際に得られる「レシート」を使って、マスタ設定に従って |defContent| を |defUser| に付与します。
+
+端末側　決済時
+===========
+
+端末からの決済時、developer payloadに |defUser| の |defCcUuid| をセットしてください。
+
+サーバ側では、developer payloadの内容を使用して付与先が不正でないか確認します。
+
+
+
+サーバ側　レシート検証と付与処理
+===========
+
+本APIでは、購入レシートをサーバに送付することで、 |defUser| に |defContent| を付与します。
+
+サーバ側では、付与前にレシートの検証と内容の確認をおこないます。
+
+* 署名検証
+
+マスタで登録されている公開鍵をもちいて、署名を検証する。
+
+* developer payloadの検証
+
+developer payloadの内容が |defUser| の |defCcUuid| と一致するか確認する。
+
+* 重複付与の回避
+
+すでに送付されたことがあるレシートでは、付与を行わない。
+
+送付済みレシートかどうかの判定は、レシートに含まれる以下の値を使用する。
+
+.. csv-table::
+    :header: サービス状態, 使用フィールド
+    :widths: 3, 10
+
+        本サービス時, ``orderId`` フィールド
+        テスト時, ``PurchageToken`` フィールドのハッシュ値
+
+
+同一のレシートが複数回送付されてきた場合、2回目以降について、APIは成功扱いとするが付与はおこなわない。
+
+
+* レシートのプロダクトIDから、付与するコンテンツを決定する
+
+レシートに含まれる ``product id`` と、ゲーム内で付与する |defContent| は、 |defIabSalesItem| マスタで設定する。
+
+
+* レシートの記録
+
+レシートと検証結果をデータベースに記録する。
+
+書き込み先は player_iabilling_verify_receipt_logs テーブル。
+
+* 付与
+
+課金時のアイテム付与では、以下の処理をおこなう。
+
+
+  * インベントリへのアイテムの付与
+
+  |defIabSalesItem| マスタにあるとおり、 |defContent| を付与する。
+
+  * 課金アイテムの取得の記録
+
+  player_payment_income_history テーブルに、課金によるアイテム取得を記録する。
+
+  payment_id は、 "IAB_xxx" が記録される（xxxは、player_iabilling_verify_receipt_log_idの値）。
+
+
+マスタ
+===========
+
+.. csv-table::
+    :header: マスタ名称, サービス
+    :widths: 3, 10
+
+        iab_conf, :doc:`../../../master/android_iab_conf`
+        iab_sales_items, :doc:`../../../master/android_iab_sales_item`
+
+
+API
+===========
+
+.. csv-table::
+    :header: API名称, ドキュメント
+    :widths: 3, 10
+
+        androidPurchaseReceiptsSend, :doc:`../../../api/android_plugin/purchase/androidPurchaseReceiptsSend`
+
+
+

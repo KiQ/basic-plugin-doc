@@ -1,0 +1,83 @@
+.. include:: ../../../definition.txt
+
+====================
+timerClose
+====================
+
+|defTimer| ポイントが |defTimer| マスタで設定した最大値である ``RUNNING`` 状態の |defTimer| を、 ``FINISHED`` 状態にして終了させるAPIです。
+
+|defTimer| マスタで |defTimer| 終了時付与 |defContent| を設定していた場合、 |defContent| の付与を行います。
+
+.. code-block:: js
+
+    timerClose(TimerCloseRequest) => TimerCloseResult
+
+Requests
+==========
+
+* statusId (int)
+    終了させる |defTimer| の |defId|
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* updateTimer (optional, :doc:`../../types/Timer`)
+    終了した |defTimer| の情報
+
+* updateInventoryElementList (optional, list<:doc:`../../types/InventoryElement`>)
+    更新された |defInventory| のリスト
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        statusId: 1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        updateTimer: {
+            statusId: 1,
+            configId: 100,
+            state: 'FINISHED'
+            point: 500,
+            lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+            countInterval: 100,
+            maxPoint: 500
+        },
+        updateInventoryElementList: [
+            {
+                inventoryId: 1001,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 10,
+                description: 'Present',
+                isPayment: false
+            }
+        ]
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20700,不正な statusId がリクエストされました
+    20703,カウントが終了していない |defTimer| が指定されました
+    20704,動作中でない |defTimer| が指定されました

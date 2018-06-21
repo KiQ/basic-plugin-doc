@@ -1,0 +1,26 @@
+.. include:: ../../definition.txt
+
+==============================
+Gacha
+==============================
+
+|defGacha| とは、プレイヤーの |defInventory| 内に所持されている特定の |defContent| を消費し、予め設定された複数の |defContent| の中から抽選を行い、選択された |defContent| を新しく付与する機能です。
+
+例えば、「お金」を消費し、「キャラクターA ～ キャラクターZ」までの |defContent| の中から抽選で1つ選び、 |defInventory| に付与するといった表現ができます。
+
+消費する |defContent| と抽選で選ばれる |defContent| は、|defGacha| マスタで設定します。設定可能な |defContent| は1種類だけでなく複数種類にすることができます。
+
+また、|defGacha| マスタには定義済みの |defGachaType| を設定することで、ルールの異なる |defGacha| を設定できます。
+設定可能な |defGachaType| は :doc:`../../master/gacha_type` を参照してください。
+
+|defGacha| の設定例は :doc:`../../master/gacha` を参照してください。
+  
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,15
+
+    :doc:`../../api/basic_plugin/gacha/gacha_execute`,リクエストした |defGacha| を実行します
+    :doc:`../../api/basic_plugin/gacha/gacha_get_available_list`,現在有効な |defGacha| の内容一覧を取得します

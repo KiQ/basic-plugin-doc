@@ -1,0 +1,19 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+LoginBonus
+====================
+
+|defLoginBonus| 内容を格納します
+
+Parameters
+====================
+
+* continueCount (int)
+    ログイン日数
+* description (string)
+    説明
+* contentsList (list<:doc:`Contents`)>)
+    付与される |defContent| の一覧

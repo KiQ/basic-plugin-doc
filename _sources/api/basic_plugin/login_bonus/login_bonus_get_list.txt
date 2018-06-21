@@ -1,0 +1,89 @@
+.. include:: ../../../definition.txt
+
+=======================
+loginBonusGetList
+=======================
+
+|defLoginBonus| マスタで設定した、現在適用されている |defLoginBonus| の内容を取得するAPIです。
+
+.. code-block:: js
+
+    loginBonusGetList(LoginBonusGetListRequest) => LoginBonusGetListResult
+
+Requests
+==========
+
+* None
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* loginBonusList (list<:doc:`../../types/LoginBonus`>)
+	取得した |defLoginBonus| リスト
+
+	備考 : 適用されている |defLoginBonus| がない場合は、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        loginBonusList: [
+            {
+                continueCount: 1,
+                description: 'ログイン1日目'
+                contentsList: [
+                    {
+                        contentId: 100,
+                        amount: 1
+                    }
+                ],
+            },
+            {
+                continueCount: 2,
+                description: 'ログイン2日目'
+                contentsList: [
+                    {
+                        contentId: 100,
+                        amount: 5
+                    }
+                ],
+            },
+            {
+                continueCount: 10,
+                description: 'ログイン10日目'
+                contentsList: [
+                    {
+                        contentId: 100,
+                        amount: 10
+                    },
+                    {
+                        contentId: 200,
+                        amount: 1
+                    }
+                ],
+            }
+        ]
+    }
+
+
+Errors
+==========
+
+API固有のエラーは定義されていません。

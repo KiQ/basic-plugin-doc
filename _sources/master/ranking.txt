@@ -1,0 +1,182 @@
+.. include:: ../definition.txt
+
+==============================
+|defRanking| マスタ
+==============================
+
+|defRanking| マスタでは、 |defRanking| の |defId| ごとの |defBonus| を定義します。
+
+|defRanking|  |defId| ごとに、ランキングの登録受付期間、集計バッチの待ち時間、
+|defBonus| の受取期間、順位区分ごとの報酬を設定します。
+
+|defBonus| は、順位区分ごとに、プレイヤーに付与される |defContent| とその個数、
+プレゼント形式かどうか、付与時のメッセージ、受取期間とあわせて定義します。
+
+以下にマスタの持つ属性値を記載します。
+  
+|defRanking| マスタの持つ属性値
+----------------------------------------
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-128
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+* ranking_id  
+    各 |defRanking| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-9999
+
+* active_from
+    登録期間の開始日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* active_to
+    登録期間の終了日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* seconds_register_wait
+    ``active_to`` からランキング集計バッチの開始までの秒数
+
+    型 : 整数値
+
+    必須 : yes
+
+* bonus_active_from
+    |defBonus| 配布期間の開始日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* bonus_active_to
+    |defBonus| 配布期間の終了日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* bonus_rank_from
+    |defBonus| の順位上限
+
+    型 : 整数値
+
+    必須 : yes
+
+* bonus_rank_to
+    |defBonus| の順位下限
+
+    型 : 整数値
+
+    必須 : yes
+
+* add_content_id
+    プレゼントとして付与される |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* add_amount
+    付与される |defContent| の個数
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* description
+    |defBonus| がプレゼントされた際のメッセージ内容
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-2048
+
+* is_present
+    content_idで指定された |defBonus| をプレゼントボックス経由で渡すかどうか指定
+
+    型 : 真偽値
+
+    必須 : yes
+
+    入力可能文字 :　TRUE または FALSE 
+
+* seconds_to_expire
+    |defBonus| を受け取ったあとの有効期限。
+    |defPresent| の場合は受取期限、 |defInventory| の場合は利用期限となる。
+
+    型 : 整数値
+
+    必須 : no
+
+    備考 : 単位は秒
+
+
+* expire_type
+    seconds_to_expireを設定した場合に、有効期限の補正を行うかどうかの指定
+
+    型 : Enum (NONE, END_OF_LAST_MONTH)
+
+    必須 : no
+
+    備考 : NONE(0)またはEND_OF_LAST_MONTH(1)。指定しない場合はNONEで扱われる
+
+
+
+--------------------------------------------------
+|defRanking| のひな形
+--------------------------------------------------
+
+:download:`Download: Rankingマスタひな形<./resources/mst_data/plain_example/ranking.xlsx>`
+
+|defRanking| の設定例
+------------------------------
+
+ランキング実施期間: 2016年10月1日 0:00 ～ 2017年4月10日 10:00
+
+ランキング集計開始: 2017年4月10日 10:30
+
+プレゼント配布期間: 2017年4月11日 17:00 ～ 2017年5月10日 10:00
+
+1位～1000位
+  contentId = 1001 を1個と、content_id = 1 を1個。
+  プレゼントボックスのメッセージは「ステージチャレンジ金賞」
+
+1001位～5000位
+  contentId = 1002 を1個。
+  プレゼントボックスのメッセージは「ステージチャレンジ銀賞」
+
+5001位～10000位
+  contentId = 1003 を1個。
+  プレゼントボックスのメッセージは「ステージチャレンジ銅賞」
+
+10001位～9999999位
+  contentId = 1004 を1個。
+  プレゼントボックスのメッセージは「ステージチャレンジ参加賞」
+
+プレゼントの開封期限はいずれも 7日間 (604800秒)
+
+の設定例です。
+
+:download:`Download: Rankingマスタの設定例1<./resources/mst_data/recipe/ranking.xlsx>`

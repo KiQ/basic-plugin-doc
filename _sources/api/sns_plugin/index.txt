@@ -1,0 +1,66 @@
+
+====================
+SnsPlugin API 仕様
+====================
+
+
+Ranking
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   ranking/sns_ranking_get_by_friends
+   ranking/sns_ranking_get_by_range
+   ranking/sns_ranking_get_by_window
+
+
+Twitter
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   twitter/sns_twitter_register
+   twitter/sns_twitter_account_move
+
+
+Facebook
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   facebook/sns_facebook_register
+   facebook/sns_facebook_account_move
+
+KiqSocial
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   kiq_social/sns_account_unregister
+
+   kiq_social/sns_kiq_register
+   kiq_social/sns_kiq_account_move
+
+
+
+Connect
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   connect/sns_connect_set_data
+   connect/sns_connect_get_data
+
+Present
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   present/sns_present_send
+

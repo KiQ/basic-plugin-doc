@@ -1,0 +1,34 @@
+.. include:: ../../definition.txt
+
+==============================
+ゲーム情報管理機能
+==============================
+
+|defGameInfo| とは、予め設定されているゲームに関する情報を、キーをリクエストすることで取得できる機能です。
+
+例えば、以下の様なゲーム情報が格納されているとします。
+
+.. code-block:: js
+
+    {
+        key: 'data_version',
+        value: 'versionA'
+    },
+    {
+        key: 'maintenance',
+        value: '2016/09/01 12:34:56'
+    }
+
+``key`` をリクエストしこれらを取得することで、メンテ時間中のゲームの動作を変える手掛かりにするといった使い方ができます。
+
+|defGameInfo| マスタについては :doc:`../../master/game_info` を参照してください。
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/basic_plugin/game_info/game_info_get`,リクエストしたキーとペアの |defGameInfo| を取得します
+    :doc:`../../api/basic_plugin/game_info/game_info_get_list`, |defGameInfo| を一覧で取得します

@@ -1,0 +1,21 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+Gacha
+====================
+
+|defGacha| の内容を格納します
+  
+Parameters
+====================
+
+* gachaId (int)
+    |defGacha| の |defId|
+* consumeContentsList (list<:doc:`Contents`>)
+    消費される |defContent| の一覧
+* activeFrom (optional, long)
+    有効期限開始日時
+* activeTo (optional, long)
+    有効期限修了日時

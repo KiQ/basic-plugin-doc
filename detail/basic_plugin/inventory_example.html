@@ -1,0 +1,900 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Inventory の例 &mdash; basic-plugin 0.1 ドキュメント</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/basicplugin_icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="basic-plugin 0.1 ドキュメント" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> basic-plugin
+          
+
+          
+            
+            <img src="../../_static/basicplugin.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">概要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">詳細仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../master/index.html">マスタデータ設定仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API 仕様</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">basic-plugin</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Inventory の例</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/detail/basic_plugin/inventory_example.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="definventory">
+<h1>Inventory の例<a class="headerlink" href="#definventory" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Inventory は、BasicPlugin でプレイヤーが所持しているコンテンツを管理するための仕組みです。</p>
+<p>交換や課金でプレイヤーに付与されたコンテンツは、Inventory に格納されていきます。</p>
+<p>以下に、Inventory を管理するための player_inventories テーブル構造の一部を示します。</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Inventory テーブル</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>inventory_id</dt>
+<dd><p class="first last">プレイヤーの Inventory 内の個々のコンテンツにユニークに与えられた 識別子</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>content_id</dt>
+<dd><p class="first last">格納されているコンテンツの 識別子</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>content_type</dt>
+<dd><p class="first last">格納されているコンテンツの種別</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>amount</dt>
+<dd><p class="first last">格納されているコンテンツの個数
+コンテンツが UncountableContent の場合、常に1が入りますが、プレゼント情報が付与されている場合のみ、個数として扱います。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>description</dt>
+<dd><p class="first last">Inventory に格納されているコンテンツの名前や説明文</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>expire_at</dt>
+<dd><p class="first last">コンテンツの有効期限
+paymentやpresentで使用します。</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="id1">
+<h2>数量で扱うコンテンツと、同名でも1つずつ別のものとして扱うコンテンツについて<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>プレイヤーの Inventory に付与されたコンテンツが、Countable である場合と、Uncountable である場合とで格納のされ方が違います。</p>
+<p>Countable の場合は「数量で扱う」コンテンツとして合算処理され、Uncountable の場合は「１つずつ別の物として扱う」コンテンツとして処理されます。</p>
+<p>以下のように設定された Content マスタと、 Inventory があるとし、例を示します。</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Content マスタ</dt>
+<dd><p class="first last">例の Content マスタは、Countable である「お金」と「回復薬」および、Uncountable である「キャラクター1」が定義されています。</p>
+</dd>
+</dl>
+</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="13%" />
+<col width="20%" />
+<col width="9%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="4">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>content_id</td>
+<td>1</td>
+<td>2</td>
+<td>...</td>
+<td>101</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>gold</td>
+<td>item</td>
+<td>...</td>
+<td>character</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>お金</td>
+<td>アイテム</td>
+<td>...</td>
+<td>キャラクター</td>
+</tr>
+<tr class="row-odd"><td>is_countable</td>
+<td>TRUE</td>
+<td>TRUE</td>
+<td>...</td>
+<td>FALSE</td>
+</tr>
+<tr class="row-even"><td>is_payment</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>...</td>
+<td>FALSE</td>
+</tr>
+<tr class="row-odd"><td>max_amount</td>
+<td>99999</td>
+<td>99</td>
+<td>...</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>system_effect</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><dl class="first docutils">
+<dt>Inventory テーブル</dt>
+<dd><p class="first last">例のテーブルには、あらかじめ「お金」と「キャラクター1」が格納されています。</p>
+</dd>
+</dl>
+</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="18%" />
+<col width="11%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="3">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>...</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>1</td>
+<td>...</td>
+<td>20</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>1</td>
+<td>...</td>
+<td>101</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>item</td>
+<td>...</td>
+<td>character</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>250</td>
+<td>...</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>お金</td>
+<td>...</td>
+<td>キャラクター1</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h3>お金、回復薬といった「数量で扱う」コンテンツ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>例のテーブルで、コンテンツ「お金」が100個プレイヤーに付与されると、以下のように格納されます。</p>
+<ul class="simple">
+<li>コンテンツ「お金」を100個付与後の Inventory テーブル</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="18%" />
+<col width="11%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="3">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>...</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>1</td>
+<td>...</td>
+<td>20</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>1</td>
+<td>...</td>
+<td>101</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>item</td>
+<td>...</td>
+<td>character</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>350</td>
+<td>...</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>お金</td>
+<td>...</td>
+<td>キャラクター1</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Inventory の「お金」の <code class="docutils literal"><span class="pre">amount</span></code> が付与分だけ加算されています。</p>
+</div>
+<div class="section" id="id3">
+<h3>同名でも個々で扱うコンテンツ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>続いて、コンテンツ「キャラクター1」がプレイヤーに付与をされると、Inventory には以下のように格納されます。</p>
+<ul class="simple">
+<li>コンテンツ「キャラクター1」付与後の player_inventories テーブル</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="13%" />
+<col width="8%" />
+<col width="27%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="4">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>...</td>
+<td>1234</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>1</td>
+<td>...</td>
+<td>20</td>
+<td>21</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>1</td>
+<td>...</td>
+<td>101</td>
+<td>101</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>item</td>
+<td>...</td>
+<td>character</td>
+<td>character</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>350</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>お金</td>
+<td>...</td>
+<td>キャラクター1</td>
+<td>キャラクター1</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Inventory の「キャラクター1」は合算されず、新規のレコードとして追加処理されます。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>課金要素の扱いについて<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Payment の場合、 Inventory への付与時に <code class="docutils literal"><span class="pre">expire_at</span></code> に対し有効期限が格納されます。</p>
+<p>以下のように Payment レコードを持つコンテンツがあるとし、例を示します。</p>
+<ul class="simple">
+<li>Content マスタ</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="12%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="2">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>content_id</td>
+<td>...</td>
+<td>1001</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>...</td>
+<td>payment</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>...</td>
+<td>課金コンテンツ</td>
+</tr>
+<tr class="row-odd"><td>is_countable</td>
+<td>...</td>
+<td>TRUE</td>
+</tr>
+<tr class="row-even"><td>is_payment</td>
+<td>...</td>
+<td>TRUE</td>
+</tr>
+<tr class="row-odd"><td>max_amount</td>
+<td>...</td>
+<td>99999</td>
+</tr>
+<tr class="row-even"><td>system_effect</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>課金処理によって、コンテンツ「課金コンテンツ」が5個プレイヤーに付与されると、Inventory  には以下のように格納されます。</p>
+<ul class="simple">
+<li>Inventory テーブル</li>
+</ul>
+<p>有効期限を示す <code class="docutils literal"><span class="pre">expire_at</span></code> が共に格納され、この有効期限を過ぎたレコードは無効化されます。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="11%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="2">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>...</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>...</td>
+<td>56</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>...</td>
+<td>1001</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>...</td>
+<td>payment</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>...</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>...</td>
+<td>課金コンテンツ</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>2016-09-16 12:34:56</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>Inventory 内コンテンツの消費について<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>消費の対象が Uncountable であった時、 <code class="docutils literal"><span class="pre">inventory_id</span></code> がリクエストされた場合は特定の Inventory を消費します。</p>
+<p>例えば、Inventory が以下の様な状態だとします。&#8221;キャラクター1&#8221; は Uncountable です。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="3">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>1234</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>101</td>
+<td>101</td>
+<td>101</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>character</td>
+<td>character</td>
+<td>character</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>キャラクター1</td>
+<td>キャラクター1</td>
+<td>キャラクター1</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>この Inventory で、&#8221;キャラクター1&#8221;を消費する <code class="docutils literal"><span class="pre">inventory_id:2</span></code>  がリクエストがされた場合、Inventory は以下のように更新されます。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="34%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="2">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>101</td>
+<td>101</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>character</td>
+<td>character</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>キャラクター1</td>
+<td>キャラクター1</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>消費の際に <code class="docutils literal"><span class="pre">inventory_id</span></code> のリクエストがない場合は以下のルールによって消費が行われます。</p>
+<ul class="simple">
+<li>消費対象となった Inventory が Countable ならば対象の <code class="docutils literal"><span class="pre">content_id</span></code> を持つコンテンツを消費</li>
+<li>消費対象となった Inventory が Uncountable ならば Inventory に格納された順に消費</li>
+<li>消費対象となった Inventory が Payment ならば <code class="docutils literal"><span class="pre">expire_at</span></code> が近い順に消費</li>
+</ul>
+<p>以下に Uncountable と Payment の消費ルールの例を記載します。</p>
+<p>例えば、Inventory が以下の様な状態だとします。 &#8220;キャラクター1&#8221; は Uncountable 、 &#8220;課金コンテンツ&#8221; は Payment とします。</p>
+<ul class="simple">
+<li>Inventory テーブル</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<col width="5%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="5">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>1234</td>
+<td>...</td>
+<td>1234</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>1</td>
+<td>2</td>
+<td>...</td>
+<td>56</td>
+<td>57</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>101</td>
+<td>101</td>
+<td>...</td>
+<td>1001</td>
+<td>1001</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>character</td>
+<td>character</td>
+<td>...</td>
+<td>payment</td>
+<td>payment</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>キャラクター1</td>
+<td>キャラクター1</td>
+<td>...</td>
+<td>課金コンテンツ</td>
+<td>課金コンテンツ</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>...</td>
+<td>2016-10-21 09:10:32</td>
+<td>2016-12-10 14:36:18</td>
+</tr>
+</tbody>
+</table>
+<p>この Inventory で <code class="docutils literal"><span class="pre">inventory_id</span></code> のリクエスト無しで &#8220;キャラクター1&#8221; を1個、 &#8220;課金コンテンツ&#8221; を5個消費したとしたら、テーブルは以下のように更新されます。</p>
+<ul class="simple">
+<li>Inventory テーブル</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="27%" />
+<col width="8%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="3">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>...</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>2</td>
+<td>...</td>
+<td>57</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>101</td>
+<td>...</td>
+<td>1001</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>character</td>
+<td>...</td>
+<td>payment</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>0</td>
+<td>...</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>キャラクター1</td>
+<td>...</td>
+<td>課金コンテンツ</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>...</td>
+<td>2016-12-10 14:36:18</td>
+</tr>
+</tbody>
+</table>
+<p>&#8220;キャラクター1&#8221; は格納された順に、 &#8220;課金コンテンツ&#8221; は <code class="docutils literal"><span class="pre">expire_at</span></code> が近い順に消費されました。</p>
+</div>
+<div class="section" id="id6">
+<h2>プレゼント状態のコンテンツについて<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>BasicPlugin では、 LoginBonus 機能でプレイヤーの Inventory にプレゼント状態でコンテンツを付与することができます。</p>
+<p>Inventory に、Content が Present として格納された場合、以下のルールが適応されます。</p>
+<ul class="simple">
+<li>プレゼント状態のコンテンツが Countable の場合、同じ <code class="docutils literal"><span class="pre">content_id</span></code> が存在しても加算せず、 Inventory の末尾に追加する</li>
+<li>プレゼント状態のコンテンツが Uncountable の場合、 <code class="docutils literal"><span class="pre">amount</span></code> を個数として扱い Inventory の末尾に追加する</li>
+</ul>
+<p>Present 状態のコンテンツの格納例を以下に示します。 &#8220;お金&#8221; は Countable &#8220;キャラクター1&#8221; と &#8220;武器1&#8221; は Uncountable とします。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="7%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ名</th>
+<th class="head" colspan="4">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>player_id</td>
+<td>1234</td>
+<td>1234</td>
+<td>1234</td>
+<td>1234</td>
+</tr>
+<tr class="row-odd"><td>inventory_id</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>content_id</td>
+<td>1</td>
+<td>1</td>
+<td>101</td>
+<td>201</td>
+</tr>
+<tr class="row-odd"><td>content_type</td>
+<td>gold</td>
+<td>present</td>
+<td>present</td>
+<td>present</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>250</td>
+<td>50</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>お金</td>
+<td>ログインボーナス</td>
+<td>ログインボーナス</td>
+<td>ログインボーナス</td>
+</tr>
+<tr class="row-even"><td>expire_at</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Present の場合、Countable であっても合算はされません。また、 Uncountable は <code class="docutils literal"><span class="pre">amount</span></code> に個数が入ります。</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright atomitech 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

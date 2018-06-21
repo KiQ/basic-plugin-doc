@@ -1,0 +1,59 @@
+
+============================
+マスタデータ設定仕様
+============================
+
+ゲームの基本となるデータをマスタデータとして定義します。
+
+BasicPlugin では、 Content マスタに設定された Content を元に各種機能を使用します。
+
+マスタデータは、 xlsx 形式や csv 形式で作成しアップロードすることができます。
+
+----
+BasicPlugin
+----
+
+.. toctree::
+   :maxdepth: 2
+
+   content
+   exchange
+   gacha
+   game_info
+   login_bonus
+   provider
+   ranking
+   stage_clear
+   timer
+
+----
+AndroidPlugin
+----
+
+.. toctree::
+   :maxdepth: 2
+
+  android_iab_conf
+  android_iab_sales_item
+
+----
+IosPlugin
+----
+
+.. toctree::
+   :maxdepth: 2
+
+  ios_iap_sales_item
+  
+----
+SnsPlugin
+----
+
+.. toctree::
+   :maxdepth: 2
+
+  sns_account_move
+  sns_friend_present
+  sns_twitter_conf
+  
+

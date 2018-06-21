@@ -1,0 +1,23 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+Present
+====================
+
+|defPresent| として登録されている |defInventory| の内容を格納します
+
+Parameters
+====================
+
+* inventoryId (int)
+    |defInventory| の |defId|
+* contentId (int)
+    |defContent| の |defId|
+* amount (int)
+    数量
+* description (string)
+    説明
+* expireDate (optional, long)
+    |defPresent| の有効期限

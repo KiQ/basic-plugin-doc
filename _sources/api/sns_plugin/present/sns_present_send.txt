@@ -1,0 +1,103 @@
+.. include:: ../../../definition.txt
+
+=======================
+presentSendToFriends
+=======================
+
+ |defFriendPresent| マスタに定義した、プレイヤー |defInventory| にある |defContent| を消費して、 ``snsIds`` に対して |defContent| をプレゼントするAPIです。
+
+.. code-block:: js
+
+    presentSendToFriends(PresentSendToFriendsRequest) => PresentSendToFriendsResult
+
+Requests
+==========
+
+* friendPresentId (int)
+	実行する |defFriendPresent| の |defId|
+
+* description (String)
+    プレゼントされた際のメッセージ内容
+
+* sndIds (SnsIds)
+    送り先の |defSns| |defId| を格納した :doc:`../types/SnsIds`
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* sndIds (SnsIds)
+    送付した |defSns| |defId| を格納した :doc:`../types/SnsIds`
+
+* updateSenderInventoryElementList (list<:doc:`../../types/InventoryElement`>)
+	更新された |defInventory| のリスト
+
+	備考 : 更新がなかった場合、空のリストを返す
+
+* deleteFromSenderInventoryElementList (list<:doc:`../../types/InventoryElement`>)
+	削除された |defInventory| のリスト
+
+	備考 : 削除されなかった場合、空のリストを返す
+
+* errorCode (optional, int)
+    API失敗時のエラーコード
+
+* errorMessage (optional, String)
+    API失敗時のエラーメッセージ
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        friendPresentId: 1,
+        description: 'プレゼントです',
+        sndIds: {
+            snsType: 'TWITTER',
+            snsIdList: ['111111','222222','333333']
+        }
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        sndIds: {
+            snsType: 'TWITTER',
+            snsIdList: ['111111','222222']
+        },
+        updateSenderInventoryElementList: [],
+        deleteFromSenderInventoryElementList: [
+            {
+                inventoryId: 3000,
+                contentId: 30,
+                contentType: 'type-03',
+                amount: 1,
+                description: '',
+                isPayment: false
+            }
+        ]
+    }
+
+
+Errors FIXME 現物にあわせる
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        20000,リクエストパラメータが不正
+
+
+
+

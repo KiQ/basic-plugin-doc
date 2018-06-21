@@ -1,0 +1,91 @@
+.. include:: ../../../definition.txt
+
+====================
+timerCreate
+====================
+
+|defTimer| を作成するAPIです。
+
+|defTimer| 設定マスタの識別子( ``configId`` )をリクエストし、その設定値を使用した |defTimer| を作成し開始します。開始時付与 |defContent| が定義されていた場合は、付与処理を行います。
+
+|defTimer| はプレイヤー毎に複数作成することが可能で、それぞれの |defTimer| を識別するために、作成時にはユニークな ``statusId`` をリクエストする必要があります。
+
+作成された |defTimer| は ``state`` に ``RUNNING`` が入り、カウント状態となります。
+
+.. code-block:: js
+
+    timerCreate(TimerCreateRequest) => TimerCreateResult
+
+Requests
+==========
+
+* statusId (int)
+    作成する |defTimer| の |defId|
+* configId (int)
+    使用する |defTimer| マスタ |defId|
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* updateTimer (optional, :doc:`../../types/Timer`)
+    作成した |defTimer| の状態
+
+* updateInventoryElementList (optional, list<:doc:`../../types/InventoryElement`>)
+    更新された |defInventory| のリスト
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        statusId: 1,
+        configId: 100
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+    
+    {
+        success: true,
+        updateTimer: {
+            statusId: 1,
+            configId: 100,
+            state: 'RUNNING'
+            point: 0,
+            lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+            countInterval: 100,
+            maxPoint: 500
+        },
+        updateInventoryElementList: [
+            {
+                inventoryId: 1001,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 10,
+                description: 'Present',
+                isPayment: false
+            }
+        ]
+    }
+
+Errors
+==========
+
+存在しない ``configId`` や、不正な ``statusId`` をリクエストした場合、エラーを返します。
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20700,不正な statusId がリクエストされました
+    20701,不正な configId がリクエストされました
+    20702,既に statusId が設定された |defTimer| が存在しています

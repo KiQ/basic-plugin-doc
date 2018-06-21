@@ -1,0 +1,75 @@
+.. include:: ../../../definition.txt
+
+=======================
+gachaGetAvailableList
+=======================
+
+|defGacha| マスタに設定した、現在有効な |defGacha| の一覧を取得します。
+
+.. code-block:: js
+
+    gachaGetAvailableList(GachaGetAvailableListRequest) => GachaGetAvailableListResult
+
+Requests
+==========
+
+* None
+
+
+Returns
+==========
+
+* success (bool)
+   APIの成否
+
+* gachaList (list<:doc:`../../types/Gacha`>)
+   取得した |defGacha| のリスト
+
+   備考 : 有効な |defGacha| が存在しない場合、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        gachaList: [
+            {
+                gachaId: １,
+                consumeContentsList: [
+                    {
+                        contentId: 100,
+                        amount: 10
+                    }
+                ]
+            },
+            {
+                gachaId: 2,
+                consumeContentsList: [
+                    {
+                        contentId: 100,
+                        amount: 5
+                    }
+                ],
+                activeFrom: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+                activeTo: 1460041200000  /* Epoch milliseconds : 2016/4/8 0:0:0 */
+            }
+        ]
+    }
+
+Errors
+==========
+
+API固有のエラーは定義されていません。

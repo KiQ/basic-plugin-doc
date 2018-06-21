@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AndroidPurchase &mdash; basic-plugin 0.1 ドキュメント</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/basicplugin_icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="basic-plugin 0.1 ドキュメント" href="../../index.html"/>
+        <link rel="up" title="Android Plugin 仕様" href="index.html"/>
+        <link rel="next" title="Ios Plugin 仕様" href="../ios_plugin/index.html"/>
+        <link rel="prev" title="Android Plugin 仕様" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> basic-plugin
+          
+
+          
+            
+            <img src="../../_static/basicplugin.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">概要</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">詳細仕様</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#basicplugin">BasicPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#snsplugin">SnsPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#splogin-plugin">Splogin_Plugin</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#androidplugin">AndroidPlugin</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Android Plugin 仕様</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">AndroidPurchase</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#iosplugin">IosPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dmmplugin">DmmPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#data-type">Data Type</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../master/index.html">マスタデータ設定仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API 仕様</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">basic-plugin</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">詳細仕様</a> &raquo;</li>
+      
+          <li><a href="index.html">Android Plugin 仕様</a> &raquo;</li>
+      
+    <li>AndroidPurchase</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/detail/android_plugin/android_purchase.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="androidpurchase">
+<h1>AndroidPurchase<a class="headerlink" href="#androidpurchase" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>AndroidPluginでは、Android の決済 (Google Play IAB V3) に対応しています。</p>
+<p>端末で決済した際に得られる「レシート」を使って、マスタ設定に従って Content を プレイヤー に付与します。</p>
+<div class="section" id="id1">
+<h2>端末側　決済時<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>端末からの決済時、developer payloadに プレイヤー の ccUuid をセットしてください。</p>
+<p>サーバ側では、developer payloadの内容を使用して付与先が不正でないか確認します。</p>
+</div>
+<div class="section" id="id2">
+<h2>サーバ側　レシート検証と付与処理<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>本APIでは、購入レシートをサーバに送付することで、 プレイヤー に Content を付与します。</p>
+<p>サーバ側では、付与前にレシートの検証と内容の確認をおこないます。</p>
+<ul class="simple">
+<li>署名検証</li>
+</ul>
+<p>マスタで登録されている公開鍵をもちいて、署名を検証する。</p>
+<ul class="simple">
+<li>developer payloadの検証</li>
+</ul>
+<p>developer payloadの内容が プレイヤー の ccUuid と一致するか確認する。</p>
+<ul class="simple">
+<li>重複付与の回避</li>
+</ul>
+<p>すでに送付されたことがあるレシートでは、付与を行わない。</p>
+<p>送付済みレシートかどうかの判定は、レシートに含まれる以下の値を使用する。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">サービス状態</th>
+<th class="head">使用フィールド</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>本サービス時</td>
+<td><code class="docutils literal"><span class="pre">orderId</span></code> フィールド</td>
+</tr>
+<tr class="row-odd"><td>テスト時</td>
+<td><code class="docutils literal"><span class="pre">PurchageToken</span></code> フィールドのハッシュ値</td>
+</tr>
+</tbody>
+</table>
+<p>同一のレシートが複数回送付されてきた場合、2回目以降について、APIは成功扱いとするが付与はおこなわない。</p>
+<ul class="simple">
+<li>レシートのプロダクトIDから、付与するコンテンツを決定する</li>
+</ul>
+<p>レシートに含まれる <code class="docutils literal"><span class="pre">product</span> <span class="pre">id</span></code> と、ゲーム内で付与する Content は、 IabSalesItem マスタで設定する。</p>
+<ul class="simple">
+<li>レシートの記録</li>
+</ul>
+<p>レシートと検証結果をデータベースに記録する。</p>
+<p>書き込み先は player_iabilling_verify_receipt_logs テーブル。</p>
+<ul class="simple">
+<li>付与</li>
+</ul>
+<p>課金時のアイテム付与では、以下の処理をおこなう。</p>
+<blockquote>
+<div><ul class="simple">
+<li>インベントリへのアイテムの付与</li>
+</ul>
+<p>IabSalesItem マスタにあるとおり、 Content を付与する。</p>
+<ul class="simple">
+<li>課金アイテムの取得の記録</li>
+</ul>
+<p>player_payment_income_history テーブルに、課金によるアイテム取得を記録する。</p>
+<p>payment_id は、 &#8220;IAB_xxx&#8221; が記録される（xxxは、player_iabilling_verify_receipt_log_idの値）。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>マスタ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">マスタ名称</th>
+<th class="head">サービス</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>iab_conf</td>
+<td><a class="reference internal" href="../../master/android_iab_conf.html"><em>Android課金設定 マスタ</em></a></td>
+</tr>
+<tr class="row-odd"><td>iab_sales_items</td>
+<td><a class="reference internal" href="../../master/android_iab_sales_item.html"><em>Android 販売アイテム マスタ</em></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">API名称</th>
+<th class="head">ドキュメント</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>androidPurchaseReceiptsSend</td>
+<td><a class="reference internal" href="../../api/android_plugin/purchase/androidPurchaseReceiptsSend.html"><em>androidPurchaseReceiptsSend</em></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ios_plugin/index.html" class="btn btn-neutral float-right" title="Ios Plugin 仕様" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Android Plugin 仕様" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright atomitech 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+.. include:: ../../../definition.txt
+
+====================
+loginBrowser
+====================
+
+DMM APIサーバからOAuth署名されたログインリクエストが届いたときに使用する内部API。
+
+.. code-block:: js
+
+    loginBrowser(int gameId,
+		String playerId,
+		String contentVersion,
+		LoginBrowserParam loginBrowserParam
+	) => LoginResult 
+
+Requests
+==========
+
+* gameId (int)
+    外形を他APIと揃えるためのダミー
+
+* playerId (String)
+    外形を他APIと揃えるためのダミー
+
+* contentVersion (String)
+    外形を他APIと揃えるためのダミー
+
+* loginBrowserParam (LoginBrowserParam)
+    ログイン時のパラメータ
+
+LoginBrowserParam 内容
+==========
+
+* appId (String)
+    リクエストのopensocial_app_id
+
+* appUrl (String)
+	リクエストのopensocial_app_url
+
+* ownerId (String)
+	リクエストのopensocial_owner_id
+
+* viewerId (String)
+	リクエストのopensocial_viewer_id
+
+* deviceType (int)
+	|defDevice| |defId|  1: PC browser, 2: Android
+
+Returns
+==========
+
+* status(bool)
+    APIの成否
+
+* code(int)
+   APIの実行結果コード。成功時200、エラー時400
+
+* errorMessage(string)
+    API失敗時のエラーメッセージ
+
+* gameId(int)
+    app_idに関連づけられたgameId
+
+* playerId(string)
+    ownerIdに関連づけられたplayerId
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        appId: '12345',
+        appUrl: 'http://example.jp/gadget.xml',
+        ownerId: '12345678',
+        viewerId: '12345678',
+        deviceType:1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        status:true,
+        code:200,
+        gameId:1,
+        playerId: '12345678'
+    }
+
+Errors
+==========
+
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    400,	マスタ設定が不足している等、処理が継続できない
+
+

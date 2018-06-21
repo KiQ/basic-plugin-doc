@@ -1,0 +1,88 @@
+.. include:: ../../../definition.txt
+
+====================
+rankingGetByWindow
+====================
+
+|defRanking| |defId| 、取得したい件数を指定してランキング情報を取得するAPIです。
+
+リクエストしたプレイヤーを中心に、前後のランキングを取得します。
+
+windowSizeは、前後合計の、取得するランキング情報の件数です。
+
+
+.. code-block:: js
+
+    rankingGetByWindow(RankingGetByWindowRequest ) => RankingGetByWindowResult 
+
+Requests
+==========
+
+* rankingId (int)
+    使用する |defRanking| マスタの ``rankingId`` 定義値
+
+* windowSize (int)
+    取得件数
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* rankingId (optional, int)
+    |defRanking| |defId|
+
+* rankingInfoList (optional, List<:doc:`../../types/SnsRankingInfo`>)
+    得られたランキング情報のリスト
+
+* errorCode (optional, int)
+    API失敗時のエラーコード
+
+* errorMessage (optional, String)
+    API失敗時のエラーメッセージ
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        rankingId: 1,
+        windowSize: 2
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        rankingId: 1,
+        rankingInfoList: [
+            {
+                rank: 1,
+                score: 100,
+                characterData: "",
+                snsType:0,
+                snsId:"11111111",
+                snsProfile:"SNSプロフィール情報"
+            },
+            {
+                rank: 2,
+                score: 50,
+                characterData: ""
+            }
+        ]
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10

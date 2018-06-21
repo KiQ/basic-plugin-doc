@@ -1,0 +1,42 @@
+.. include:: ../../definition.txt
+
+==============================
+|defInventory| の加減算方法
+==============================
+
+|defInventory| 内の |defContent| に対する加算、減算の方法は |defContent| マスタの ``content_class`` 属性の設定によって異なります。
+
+以下に、各 |defContent| 毎の加算、減算の方法について示します。
+
+|defCountable|
+--------------------
+
+* |defInventory| 内での加算方法
+    加算が行われる際は対象の |defContent| の |defId| を持つレコードに対して加算を行います。
+
+    対象の |defContent| の |defId| を持つレコードがない場合は追加されます。
+
+* |defInventory| 内での減算方法
+    減算が行われる際は対象の |defContent| の |defId| を持つレコードに対して減算を行います。
+
+|defUncountable|
+--------------------
+
+* |defInventory| 内での加算方法
+    加算が行われる際は |defInventory| の末尾にレコードを追加します。
+
+* |defInventory| 内での減算方法
+    減算が行われる際は追加されたレコード順に減算します。
+
+    減算対象となる |defInventory| の |defId| を直接指定することもできます。
+
+|defPayment|
+--------------------
+
+* |defInventory| 内での加算方法
+    加算が行われる際は |defInventory| の末尾にレコードを追加します。
+
+* |defInventory| 内での減算方法
+    減算が行われる際は古いレコード順に減算します。
+
+    減算対象となる |defInventory| の |defId| を直接指定することもできます。

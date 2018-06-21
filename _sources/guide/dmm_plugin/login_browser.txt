@@ -1,0 +1,20 @@
+.. include:: ../../definition.txt
+
+==============================
+ブラウザ向けログイン処理 内部API
+==============================
+
+OAuth署名されたクエリパラメータをうけとって、 ``game_id`` と ``player_id`` を取得します。
+
+クエリパラメータとgame_idの対応はマスタに登録します。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/dmm_plugin/login_browser/login_browser`,ログイン
+

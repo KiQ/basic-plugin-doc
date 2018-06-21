@@ -1,0 +1,137 @@
+.. include:: ../definition.txt
+
+==============================
+|defFriendPresent|  マスタ
+==============================
+
+|defFriendPresent| マスタは、「フレンドにプレゼントを贈る」ための定義を登録します。
+
+以下にマスタの持つ属性値を記載します。
+
+|defFriendPresent| マスタの持つ属性値
+
+=======================================
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-128
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+
+* friend_present_id
+    |defFriendPresent| |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+
+* active_from
+    |defFriendPresent| |defId| が有効な期間の開始日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : no
+
+
+* active_to
+    |defFriendPresent| |defId| が有効な期間の終了日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : no
+
+* ignore_self
+    プレゼントの贈り先リストに |defUser| 自身が含まれる場合に、贈り先に含むか無視するかの指定
+
+    FALSEはプレゼントの贈り先リストに |defUser| 自身が含まれる場合に、 |defUser| にも贈る。TRUEで無視する。
+
+    型 : 真偽値
+
+    必須 : yes
+
+    入力可能文字 :　TRUE または FALSE 
+
+
+* consume_content_id
+    プレゼント時に |defUser| が消費する |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+* consume_amount
+    プレゼント時に |defUser| が消費する |defContent| の個数
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+    備考 : ``add_content_id`` を定義した場合は必須
+
+* add_content_id
+    プレゼントで贈られる |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+* add_amount
+    プレゼントで贈られる |defContent| の個数
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+    備考 : ``add_content_id`` を定義した場合は必須
+
+* seconds_to_expire
+    受取期限
+
+    型 : 整数値
+
+    必須 : no
+
+    備考 : 単位は秒
+
+* expire_type
+    seconds_to_expireを設定した場合に、有効期限の補正を行うかどうかの指定
+
+    型 : Enum (NONE, END_OF_LAST_MONTH)
+
+    必須 : no
+
+    備考 : NONE(0)またはEND_OF_LAST_MONTH(1)。指定しない場合はNONEで扱われる
+
+
+
+
+--------------------------------------------------
+|defFriendPresent| のひな形
+--------------------------------------------------
+
+:download:`Download: FriendPresent マスタひな形<./resources/mst_data/sns/plain_example/friend_present.xlsx>`
+
+
+|defFriendPresent|  の設定例
+============================================================
+
+|defFriendPresent| の設定例です。
+
+:download:`Download: FriendPresent マスタの設定例1<./resources/mst_data/sns/recipe/friend_present.xlsx>`

@@ -1,0 +1,123 @@
+.. include:: ../definition.txt
+
+==============================
+|defTimer| マスタ
+==============================
+
+|defTimer| マスタでは、タイマーの初期値や最大値、ポイントのカウント間隔、タイマーの開始時と終了時に付与する |defContent| 情報を定義します。
+
+|defTimer| を作成する際に、 |defTimer| マスタの ``timer_config_id`` を指定することで、定義された属性値が適用されます。
+
+以下にマスタの持つ属性値を記載します。
+
+|defTimer| マスタの持つ属性値
+=======================================
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-32
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+* timer_config_id
+    |defTimer| 設定の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-9999
+
+* init_point
+    開始時のポイント初期値
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999( ``max_point`` を超えない範囲)
+
+* max_point
+    カウントするポイントの最大値
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* count_interval
+    1ポイントカウントするのにかかる秒数
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 1-99999
+
+* begin_add_content_id
+    開始時に付与を行う |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+    備考 : 開始時に付与できる |defContent| は 99 個まで
+
+* begin_add_amount
+    開始時に付与を行う|defContent| の個数
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+    備考 : |defContent| の ``max_amount`` を超えない範囲
+
+* end_add_content_id
+    終了時に付与を行う |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+    備考 : 終了時に付与できる |defContent| は 99 個まで
+
+* end_add_amount
+    終了時に付与を行う |defContent| の個数
+
+    型 : 整数値
+
+    必須 : no
+
+    備考 : |defContent| の ``max_amount`` を超えない範囲
+
+--------------------------------------------------
+|defTimer| のひな形
+--------------------------------------------------
+
+:download:`Download: Timerマスタひな形<./resources/mst_data/plain_example/timer.xlsx>`
+
+一定時間後にプレイヤーに 「武器」 を付与する Timer の設定例
+============================================================
+
+「素材A」と引き換えに、1時間後「武器A」をプレイヤーに付与する Timer の設定例です。
+
+1． 「素材A」を消費して「引換券1」を付与する |defExchange| を実行
+
+2． タイマーを生成し、終了時に「引換券2」を付与
+
+3． 「引換券1」,「引換券2」を消費して「武器A」を付与する |defExchange| を実行
+
+
+:download:`Download: Timerマスタの設定例1<./resources/mst_data/recipe/reward_after_1_hour/reward_after_1_hour.zip>`

@@ -1,0 +1,115 @@
+
+====================
+API 仕様
+====================
+
+
+Inventory
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   inventory/inventory_get
+
+
+GameInformation
+==============================
+
+.. toctree::
+   :maxdepth: 1
+   
+   game_info/game_info_get
+   game_info/game_info_get_list
+
+
+Exchange
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   exchange/exchange
+
+
+Gacha
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   gacha/gacha_execute
+   gacha/gacha_get_available_list
+
+
+Present
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   present/present_open
+   present/present_get_list
+
+
+LoginBonus
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   login_bonus/login_bonus_update
+   login_bonus/login_bonus_get_list
+
+
+Timer
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   timer/timer_create
+   timer/timer_close
+   timer/timer_delete
+   timer/timer_get
+   timer/timer_get_list
+   timer/timer_modify_by_content
+
+
+Provider
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   provider/provider_create
+   provider/provider_update
+   provider/provider_delete
+
+Stage
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   stage/stage_clear
+
+Ranking
+====================
+
+.. toctree::
+   :maxdepth: 1
+
+   ranking/ranking_bonus_get_updatable_list
+   ranking/ranking_bonus_update
+
+ObjectStorage
+==============================
+
+.. toctree::
+   :maxdepth: 1
+   
+   object_storage/object_storage_add
+   object_storage/object_storage_set
+   object_storage/object_storage_get
+   object_storage/object_storage_delete

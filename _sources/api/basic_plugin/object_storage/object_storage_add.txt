@@ -1,0 +1,62 @@
+.. include:: ../../../definition.txt
+
+=======================
+objectStorageAdd
+=======================
+
+|defObjectStorage| にキーとバリューのセットを保存します。
+
+.. code-block:: js
+
+    objectStorageAdd(ObjectStorageAddRequest) => ObjectStorageAddResult
+
+Requests
+==========
+
+* key (string)
+    プレイヤー毎に一意な、データを示すキー
+
+* value (binary)
+    |defObjectStorage| に保存するデータ
+
+* hash (binary)
+    ``value`` のハッシュ値
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        key: 'key-A',
+        value: /* binary */
+        hash: /* binary */
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20801, |defObjectStorage| 内に同一の key が存在します
+    20802,hash の確認に失敗しました

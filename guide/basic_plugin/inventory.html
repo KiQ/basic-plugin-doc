@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>インベントリ機能 &mdash; basic-plugin 0.1 ドキュメント</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/basicplugin_icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="basic-plugin 0.1 ドキュメント" href="../../index.html"/>
+        <link rel="up" title="BasicPlugin 概要" href="index.html"/>
+        <link rel="next" title="交換機能" href="exchange.html"/>
+        <link rel="prev" title="BasicPlugin について" href="guide.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> basic-plugin
+          
+
+          
+            
+            <img src="../../_static/basicplugin.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">概要</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#basicplugin">BasicPlugin</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">BasicPlugin 概要</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="guide.html">BasicPlugin について</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">インベントリ機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="exchange.html">交換機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gacha.html">ガチャ機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="login_bonus.html">ログインボーナス機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="present.html">プレゼント管理機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer.html">タイマー機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="provider.html">一定時間毎にコンテンツを生成する機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ranking.html">ランキング機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stage_clear.html">ステージクリア機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="game_info.html">ゲーム情報管理機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_storage.html">ストレージ機能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#snsplugin">SnsPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#splogin-plugin">Splogin_Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#androidplugin">AndroidPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#iosplugin">IosPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dmmplugin">DmmPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#data-type">Data Type</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../detail/index.html">詳細仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../master/index.html">マスタデータ設定仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API 仕様</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">basic-plugin</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">概要</a> &raquo;</li>
+      
+          <li><a href="index.html">BasicPlugin 概要</a> &raquo;</li>
+      
+    <li>インベントリ機能</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/guide/basic_plugin/inventory.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>インベントリ機能<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>BasicPlugin では、「ゲーム内通貨」「素材」「武器」「キャラクター」「スタミナ」「経験値」といった、
+マスタデータを <a class="reference internal" href="#guide-content"><span>Content</span></a> と呼び、 <a class="reference internal" href="../../master/content.html"><em>Content マスタ</em></a> で定義します。
+定義した Content は <code class="docutils literal"><span class="pre">content_id</span></code> によって識別され、 プレイヤーデータを操作するためのマスタデータ設定では、Content を示す <code class="docutils literal"><span class="pre">content_id</span></code> が必要になります。</p>
+<p>また BasicPlugin では、「お金を所持している状態」「レベルが上がった状態」「スタミナが満タンの状態」といった、
+プレイヤーデータを保持するデータベースを <a class="reference internal" href="#guide-inventory"><span>Inventory</span></a> と呼びます。
+マスタデータに定義された Content をプレイヤーデータとして扱い、プレイヤーがコンテンツを所持している状態にするためには、
+Content とその個数の情報を Inventory に入れる必要があり、各データは <code class="docutils literal"><span class="pre">inventory_id</span></code> によって識別されます。</p>
+<p>BasicPlugin のプレイヤーデータを操作する API は、基本 Inventory に対して作用します。</p>
+<p>各ゲームデータそのものを Content と呼び、 Inventory に入ることで実体を持つイメージです。</p>
+<p>以下、Content と Inventory の各々の詳細です。</p>
+<div class="section" id="content">
+<span id="guide-content"></span><h2>Content<a class="headerlink" href="#content" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>BasicPlugin では、ゲームデータを <strong>Content</strong> と呼び、主に以下の項目を <a class="reference internal" href="../../master/content.html"><em>Content マスタ</em></a> で定義します。</p>
+<p>Content の目的用途に合わせて様々なパラメータを持たせることができます。</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Content の属性</dt>
+<dd><p class="first">ゲーム内での Content の属性を定義します。</p>
+<p>このジャンルは、 1つの Content に対して 1つのジャンルを 1～128 文字の範囲内で任意に指定することができ、
+これを用いてゲーム内で Content を属性ごとに扱うことができます。</p>
+<p>例えば「キャラクターA～Z」までマスタデータとして定義されている Content の内、プレイヤーが「キャラクターA」「キャラクターC」を所持していたとき、
+「キャラクターA～Z」に共通で &#8220;character&#8221; という属性が指定してあると、プレイヤーの所持しているキャラクターリストとして
+簡単に「キャラクターA」「キャラクターC」を得ることができます。</p>
+<p class="last">適切な属性を設定することで <code class="docutils literal"><span class="pre">content_id</span></code> を指定して1つずつ所持しているか確認をする必要がなくなります。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Content の扱い方</dt>
+<dd><p class="first"><a class="reference internal" href="#guide-inventory"><span>Inventory</span></a> で管理される Content の扱い方のルールを定義します。</p>
+<p>この管理ルールについては、予め用意されたルールがあり、以下のルールから指定します。</p>
+<ul>
+<li><dl class="first docutils">
+<dt>COUNTABLE</dt>
+<dd><p class="first last">「ゲーム内通貨」や「スタミナ」等のプレイヤーの所持数の総数だけが必要なコンテンツ</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>UNCOUNTABLE</dt>
+<dd><p class="first last">「武器」や「キャラクター」等の同一 Content の中で異なるステータスを持たせたいコンテンツ</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PAYMENT</dt>
+<dd><p class="first last">有償データとして、他の Content とは分けて管理したコンテンツ</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p class="last">指定できる各管理ルールの詳細については、 <a class="reference internal" href="../../master/content_class.html"><em>ContentClass 一覧</em></a> を参照してください。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Content のシステム効果</dt>
+<dd><p class="first">Content の絡まない特殊なシステム効果を定義します。</p>
+<p>このシステム効果は、予め用意された効果があり、以下の効果から指定できます。</p>
+<ul>
+<li><dl class="first docutils">
+<dt>TIMER_EFFECT</dt>
+<dd><p class="first last">経過時間を扱えるタイマー機能を持った <a class="reference internal" href="timer.html"><em>Timer</em></a> の、経過時間を変動させる効果</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PROVIDER_EFFECT</dt>
+<dd><p class="first last">一定時間毎にコンテンツを生成する機能を持った <a class="reference internal" href="provider.html"><em>Provider</em></a> の経過時間を増加させる効果</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p class="last">指定できる各システム効果の詳細については、 <a class="reference internal" href="../../master/system_effect_type.html"><em>SystemEffectType 一覧</em></a> を参照してください。</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>具体的な Content のマスタデータの設定は、 <a class="reference internal" href="../../master/content.html"><em>Content マスタ</em></a> を参照してください。</p>
+<div class="section" id="inventory">
+<span id="guide-inventory"></span><h3>Inventory<a class="headerlink" href="#inventory" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>BasicPlugin では、プレイヤーデータを <strong>Inventory</strong> で保持します。
+そのため、プレイヤーデータを扱う API は、基本的に Inventory に対して作用します。</p>
+<p>また、Inventory にあるプレイヤーデータの消費や付与にはルールがあります。</p>
+</div>
+<div class="section" id="id2">
+<h3>消費・付与のルール<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Content の加算・減算が行われる際、対象 Content の content_type の属性によって、異なる挙動をします。</p>
+<div class="section" id="id3">
+<h4>加算について<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>加算対象となった Content が Countable の場合、同一の <code class="docutils literal"><span class="pre">content__id</span></code> を持つ Content に追加します。</li>
+<li>加算対象となった Content が Uncountable の場合、 Inventory の末尾に加算する個数分 Content を追加する。</li>
+<li>加算対象となった Content が Payment の場合、 Inventory の末尾に追加する。</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h4>減算について<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>減算対象となった Content が Countable の場合、 同一の <code class="docutils literal"><span class="pre">content_id</span></code> を持つ Content を減算します。</li>
+<li>減算対象となった Content が Uncountable の場合、Inventory に追加された順に減算します。</li>
+<li>減算対象となった Content が Payment の場合、有効期限が近い順に減算します。有効期限が同一な場合は、 Inventory に追加された順に減算します。</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="exchange.html" class="btn btn-neutral float-right" title="交換機能" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="guide.html" class="btn btn-neutral" title="BasicPlugin について" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright atomitech 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

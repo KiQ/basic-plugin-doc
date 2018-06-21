@@ -1,0 +1,33 @@
+
+==========================
+BasicPlugin ドキュメント
+==========================
+
+BasicPlugin とは、株式会社アトミテックが提供する GSaaS（Game Server as a Service）：KiQ の中の 1つのサービスです。
+（GSaaS：KiQについては `KiQ http://kiq.biz/` を参照してください。）
+
+BasicPlugin を使用すると、サーバロジックの開発やゲームサーバの運用をすることなく、オンライン対応のゲームアプリケーション開発を可能にします。
+
+
+* :doc:`./guide/index`
+    概要と各機能について説明します。
+
+* :doc:`./detail/index`
+    各機能の詳細仕様です。
+
+* :doc:`./master/index`
+    マスタデータリファレンスです。
+
+* :doc:`./api/index`
+    API リファレンスです。
+
+index
+----------
+
+.. toctree::
+   :maxdepth: 2
+   
+   guide/index
+   detail/index
+   master/index
+   api/index

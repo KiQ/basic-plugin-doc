@@ -1,0 +1,55 @@
+.. include:: ../definition.txt
+
+==============================
+|defAccountMove| マスタ
+==============================
+
+引継ぎ時に消去する |defContent| を指定するマスタです。
+
+|defContent| ごとに、AndroidからiOS、のような |defDevice| |defType| が変更される引継ぎのときだけ消去するか、
+すべての引継ぎで消去するかを指定できます。
+
+以下にマスタの持つ属性値を記載します。
+
+|defAccountMove| マスタの持つ属性値
+
+=======================================
+
+* remove_virtual_money_mode
+    引継ぎ時の挙動を指定します
+	
+    1 = 引継ぎ時に |defDevice| |defType| が変更されるときだけ削除する
+
+    2 = すべての引継ぎで削除する
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 1-2
+
+
+* consume_content_id
+    消去する |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+
+
+--------------------------------------------------
+|defAccountMove| のひな形
+--------------------------------------------------
+
+:download:`Download: AccountMove マスタひな形<./resources/mst_data/sns/plain_example/account_move.xlsx>`
+
+
+|defAccountMove|  の設定例
+============================================================
+
+1または複数の AccountMove の設定例です。
+
+:download:`Download: AccountMoveマスタの設定例1<./resources/mst_data/sns/recipe/account_move.xlsx>`

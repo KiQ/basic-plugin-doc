@@ -1,0 +1,25 @@
+.. include:: ../../definition.txt
+
+====================
+Provider
+====================
+
+|defProvider| とは、一定時間毎に |defContent| を増加することができる機能です。
+
+例えば、対象とする |defContent| を「スタミナ」とした場合
+最大スタミナ24のプレイヤーが12までスタミナを消費していた時、スタミナが5分ごとに1ずつ増加していき1時間後にはスタミナが24になる、といった表現できます。
+
+加算対象の |defContent| や初期ポイント、最大ポイント、カウント間隔などは |defProvider| マスタで設定します。
+
+|defProvider| マスタの設定については、:doc:`../../master/provider` を参照してください。
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,15
+
+    :doc:`../../api/basic_plugin/provider/provider_create`, |defProvider| を新規で作成します
+    :doc:`../../api/basic_plugin/provider/provider_update`,リクエストした |defProvider| を更新します
+    :doc:`../../api/basic_plugin/provider/provider_delete`,リクエストした |defProvider| を削除します

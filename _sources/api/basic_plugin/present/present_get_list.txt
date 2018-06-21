@@ -1,0 +1,69 @@
+.. include:: ../../../definition.txt
+
+====================
+presentGetList
+====================
+
+|defInventory| 内の |defPresent| を一覧で取得するAPIです。
+
+.. code-block:: js
+
+    presentGetList(PresentGetListRequest) => PresentGetListResult 
+
+Requests
+==========
+
+* None
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* presentList (list<:doc:`../../types/Present`>)
+    取得した |defPresent| のリスト
+
+* 備考
+    対象となる Present のリストがない時、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        presentList: [
+            {
+                inventoryId: 1000,
+                contentId: 10,
+                amount: 10,
+                description: ''
+            },
+            {
+                inventoryId: 2000,
+                contentId: 20,
+                amount: 10,
+                description: '',
+                expireDate: 1460041200000  /* Epoch milliseconds : 2016/4/8 0:0:0 */
+            }
+        ]
+    }
+
+
+Errors
+==========
+
+API固有のエラーは定義されていません。

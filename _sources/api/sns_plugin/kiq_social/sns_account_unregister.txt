@@ -1,0 +1,57 @@
+.. include:: ../../../definition.txt
+
+==========
+accountUnregister
+==========
+
+|defUser| のSNS登録を解除します(Twitter/Facebook共通)。
+
+.. code-block:: js
+
+    accountUnregister(AccountUnregisterRequest ) => AccountUnregisterResult 
+
+Requests
+==========
+
+* None
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* errorCode (optional, int)
+    API失敗時のエラーコード
+
+* errorMessage (optional, String)
+    API失敗時のエラーメッセージ
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true
+    }
+
+Errors
+==========
+
+
+API固有のエラーは定義されていません。
+
+

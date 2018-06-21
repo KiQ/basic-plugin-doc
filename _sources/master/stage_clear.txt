@@ -1,0 +1,154 @@
+.. include:: ../definition.txt
+
+==============================
+|defStageClear| マスタ
+==============================
+
+|defStageClear| マスタでは、 |defStageClear| の |defId| ごとに、ステージクリア報告を受け取る期間、
+正常とみなすスコアの上限値、 |defBonus| を受け取る条件、
+|defUser| に付与される |defContent| とその個数、付与する形式、有効期限を定義します。
+ 
+|defBonus| は、クリアしていないことを条件として設定することも可能です。
+ 
+  
+|defStageClear| マスタの持つ属性値
+----------------------------------------
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-128
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+* stage_clear_id  
+    各 |defStageClear| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-9999
+
+* active_from
+    登録期間の開始日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* active_to
+    登録期間の終了日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* score_upper_limit
+    不正とみなさないスコア上限値
+
+    型 : 整数値
+
+    必須 : yes
+
+* is_cleared
+    |defBonus| の付与条件。クリア時の |defBonus| 定義ならTRUE、非クリア時の |defBonus| 定義ならFALSE。
+
+    型 : 真偽値
+
+    必須 : yes
+
+    入力可能文字 :　TRUE または FALSE 
+
+* bonus_score_from
+    |defBonus| のスコア下限
+
+    型 : 整数値
+
+    必須 : yes
+
+* bonus_score_to
+    |defBonus| のスコア上限
+
+    型 : 整数値
+
+    必須 : yes
+
+* add_content_id
+    プレゼントとして付与される |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* add_amount
+    付与される |defContent| の個数
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+    備考 : ``add_content_id`` を定義した場合は必須
+
+* description
+    |defBonus| がプレゼントされた際のメッセージ内容
+
+    型 : 文字列
+
+    必須 : no
+
+    入力可能文字数 : 1-2048
+
+* is_present
+    ``add_content_id`` で指定された |defBonus| をプレゼントボックス経由で渡すかどうか指定
+
+    型 : 真偽値
+
+    必須 : yes
+
+    入力可能文字 :　TRUE または FALSE 
+
+* seconds_to_expire
+    |defBonus| を受け取ったあとの有効期限。
+    |defPresent| の場合は受取期限、 |defInventory| の場合は利用期限となる。
+
+    型 : 整数値
+
+    必須 : no
+
+    備考 : 単位は秒
+
+* expire_type
+    ``seconds_to_expire`` を設定した場合に、有効期限の補正を行うかどうかの指定
+
+    型 : Enum (NONE, END_OF_LAST_MONTH)
+
+    必須 : no
+
+    備考 : NONE(0)またはEND_OF_LAST_MONTH(1)。指定しない場合はNONEで扱われる
+
+
+
+
+--------------------------------------------------
+|defStageClear| のひな形
+--------------------------------------------------
+
+:download:`Download: StageClearマスタひな形<./resources/mst_data/plain_example/stage_clear.xlsx>`
+
+|defStageClear| の設定例
+------------------------------
+
+2016年10月1日0:00 ～ 2016年11月30日 23:59 までステージクリア登録を受け付ける |defStageClear| の設定例です。
+
+クリア時で点数が1000点～99999点、500点～999点、0点～499点の3種類、非クリア時で点数が0点～99999点の1種類、の合計4種類の設定です。
+
+:download:`Download: StageClearマスタの設定例1<./resources/mst_data/recipe/stage_clear.xlsx>`

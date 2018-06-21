@@ -1,0 +1,113 @@
+.. include:: ../../../definition.txt
+
+====================
+doPaymentItemGrant
+====================
+
+DMMで課金した際に、dmm_salesitems マスタに定義した |defContent| を付与する内部API。
+
+|defPayment| |defId| ごとに、requestJson.status=2 の ``requestJson`` が、最初に届いたときのみアイテム付与処理を実行する。
+
+.. code-block:: js
+
+    doPaymentItemGrant(int gameId,
+		String playerId,
+		String contentVersion,
+		DoPaymentItemGrantParam doPaymentItemGrantParam) => DoPaymentItemGrantResult 
+
+Requests
+==========
+
+* gameId (int)
+    外形を他APIと揃えるためのダミー
+
+* playerId (String)
+    外形を他APIと揃えるためのダミー
+
+* contentVersion (String)
+    外形を他APIと揃えるためのダミー
+
+* doPaymentItemGrantParam (DoPaymentItemGrantParam)
+    決済完了可否レスポンスの内容
+
+DoPaymentItemGrantParam 内容
+==========
+
+* appId (String)
+    リクエストのopensocial_app_id
+
+* appUrl (String)
+	リクエストのopensocial_app_url
+
+* ownerId (String)
+	リクエストのopensocial_owner_id
+
+* viewerId (String)
+	リクエストのopensocial_viewer_id
+
+* deviceType (int)
+	|defDevice| |defId|  1: PC browser, 2: Android
+
+* requestJson (String)
+	決済確認リクエストのJSON 
+
+
+Returns
+==========
+
+* isFinished (bool)
+    付与処理完了の成否。trueは付与完了。falseの場合はリトライ
+
+* code (int)
+    APIの実行結果コード。成功時200、エラー時400
+
+* errorMessage (String)
+    API失敗時のエラーメッセージ
+
+* gameId (int)
+    構造を共通化するためのダミー
+
+* playerId (String)
+    構造を共通化するためのダミー
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        appId: '12345',
+        appUrl: 'http://example.jp/gadget.xml',
+        ownerId: '12345678',
+        viewerId: '12345678',
+        deviceType:1,
+        requestJson: '{...}'
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        isFinished: true,
+        code:200
+    }
+
+Errors
+==========
+
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    400,	マスタ設定が不足している等、処理が継続できない
+
+
+

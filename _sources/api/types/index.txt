@@ -1,0 +1,20 @@
+
+==========
+データ型
+==========
+
+
+.. toctree::
+   :maxdepth: 1
+   
+   Contents
+   GameInfo
+   InventoryElement
+   LoginBonus
+   Present
+   Gacha
+   Timer
+   Provider
+   RegisterRankingRequest
+   RegisterRankingResult
+   RegisterRankingResultState

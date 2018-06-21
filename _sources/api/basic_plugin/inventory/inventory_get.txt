@@ -1,0 +1,80 @@
+.. include:: ../../../definition.txt
+
+====================
+inventoryGet
+====================
+
+|defInventory| から、指定した ``content_type`` に一致する |defContent| を取得するAPIです。
+
+.. code-block:: js
+
+    inventoryGet(InventoryGetRequest) => InventoryGetResult
+
+Requests
+==========
+
+* contentType(string)
+	|defContent| マスタで定義した ``content_type`` を指定
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* InventoryElementList (list<:doc:`../../types/InventoryElement`>)
+	取得した |defInventory| のリスト
+
+	備考 : 取得できる |defInventory| がなかった場合、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        contentType: 'type-01'
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        InventoryElementList: [
+            {
+                inventoryId: 1000,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 10,
+                description: '',
+                isPayment: false
+            },
+            {
+                inventoryId: 2000,
+                contentId: 11,
+                contentType: 'type-01',
+                amount: 20,
+                description: '',
+                isPayment: false
+            },
+            {
+                inventoryId: 3000,
+                contentId: 12,
+                contentType: 'type-01',
+                amount: 30,
+                description: '',
+                isPayment: false
+            }
+        ]
+    }
+
+Errors
+==========
+
+API固有のエラーは定義されていません。

@@ -1,0 +1,23 @@
+.. include:: ../../definition.txt
+
+==============================
+Ranking
+==============================
+
+|defRanking| は、|defRanking| |defId| ごとに集計された順位によって付与された |defBonus| を、クライアントが受け取るための機能です。
+
+順位は、 |defStageClear| で登録された点数と登録時刻から集計されます。（同点の場合は登録が早いほうが上位となります）
+
+
+
+|defRanking| の設定例は :doc:`../../master/ranking` を参照してください。
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,15
+
+    :doc:`../../api/basic_plugin/ranking/ranking_bonus_get_updatable_list` , |defRanking| で |defBonus| が受取可能な |defRanking| |defId| のリストを取得します
+    :doc:`../../api/basic_plugin/ranking/ranking_bonus_update` , |defRanking| |defId| を指定して |defBonus| を受け取ります

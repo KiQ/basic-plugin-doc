@@ -1,0 +1,24 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+
+====================
+RegisterRankingResultState
+====================
+
+RegisterRankingResult の状態を示すenumです
+
+Value
+====================
+
+* NEW_ENTRY
+    新規登録
+* UPDATE_SCORE
+    スコアを更新
+* NOT_UPDATED
+    スコアは更新されなかった
+* UNDEFINED
+    未定義
+
+

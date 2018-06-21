@@ -1,0 +1,14 @@
+
+==============================
+DmmPlugin 概要
+==============================
+
+この章では、 DmmPlugin の提供する内部APIについて説明します。
+
+.. toctree::
+   :maxdepth: 1
+
+   login_browser
+   payment
+   opensocial
+

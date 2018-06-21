@@ -1,0 +1,19 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+Provider
+====================
+
+|defProvider| の情報を格納します。
+
+Parameters
+====================
+
+* configId (int)
+    |defProvider| の |defId|
+* lastUpdate (long)
+    最終ポイント更新日時
+* countInterval (int)
+   |defProvider| のカウント間隔

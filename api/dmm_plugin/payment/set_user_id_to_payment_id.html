@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>setUserIdToPaymentId &mdash; basic-plugin 0.1 ドキュメント</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/basicplugin_icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="basic-plugin 0.1 ドキュメント" href="../../../index.html"/>
+        <link rel="up" title="DmmPlugin API 仕様" href="../index.html"/>
+        <link rel="next" title="doPaymentItemGrant" href="do_payment_item_grant.html"/>
+        <link rel="prev" title="isValidPaymentRequestBrowser" href="is_valid_payment_request_browser.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> basic-plugin
+          
+
+          
+            
+            <img src="../../../_static/basicplugin.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/index.html">概要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../detail/index.html">詳細仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../master/index.html">マスタデータ設定仕様</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API 仕様</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#basicplugin">BasicPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#snsplugin">SnsPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#splogin-plugin">Splogin_Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#androidplugin">AndroidPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#iosplugin">IosPlugin</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#dmmplugin">DmmPlugin</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">DmmPlugin API 仕様</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#loginbrowser">LoginBrowser</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#payment">Payment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#opensocial">OpenSocial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#data-type">Data Type</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">basic-plugin</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">API 仕様</a> &raquo;</li>
+      
+          <li><a href="../index.html">DmmPlugin API 仕様</a> &raquo;</li>
+      
+    <li>setUserIdToPaymentId</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/api/dmm_plugin/payment/set_user_id_to_payment_id.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setuseridtopaymentid">
+<h1>setUserIdToPaymentId<a class="headerlink" href="#setuseridtopaymentid" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>DMM APIサーバからOAuth署名された決済確定リクエストが届いたときに、 ownerIdの 識別子 を Payment 識別子  に紐付けて記録するための内部API。</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">setUserIdToPaymentId</span><span class="p">(</span><span class="kr">int</span> <span class="nx">gameId</span><span class="p">,</span>
+            <span class="nb">String</span> <span class="nx">playerId</span><span class="p">,</span>
+            <span class="nb">String</span> <span class="nx">contentVersion</span><span class="p">,</span>
+            <span class="nx">SetUserIdToPaymentIdParam</span> <span class="nx">setUserIdToPaymentIdParam</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">SetUserIdToPaymentIdResult</span>
+</pre></div>
+</div>
+<div class="section" id="requests">
+<h2>Requests<a class="headerlink" href="#requests" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>gameId (int)</dt>
+<dd><p class="first last">外形を他APIと揃えるためのダミー</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>playerId (String)</dt>
+<dd><p class="first last">外形を他APIと揃えるためのダミー</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>contentVersion (String)</dt>
+<dd><p class="first last">外形を他APIと揃えるためのダミー</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>setUserIdToPaymentIdParam (SetUserIdToPaymentIdParam)</dt>
+<dd><p class="first last">決済確認リクエストの内容</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="isvalidpaymentparam">
+<h2>IsValidPaymentParam 内容<a class="headerlink" href="#isvalidpaymentparam" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>appId (String)</dt>
+<dd><p class="first last">リクエストのopensocial_app_id</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>appUrl (String)</dt>
+<dd><p class="first last">リクエストのopensocial_app_url</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>ownerId (String)</dt>
+<dd><p class="first last">リクエストのopensocial_owner_id</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>viewerId (String)</dt>
+<dd><p class="first last">リクエストのopensocial_viewer_id</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>deviceType (int)</dt>
+<dd><p class="first last">端末 識別子  1: PC browser, 2: Android</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>paymentId (String)</dt>
+<dd><p class="first last">Payment 識別子</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>status (bool)</dt>
+<dd><p class="first last">APIの成否</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>code (int)</dt>
+<dd><p class="first last">APIの実行結果コード。成功時200、エラー時400</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>errorMessage (String)</dt>
+<dd><p class="first last">API失敗時のエラーメッセージ</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>gameId (int)</dt>
+<dd><p class="first last">構造を共通化するためのダミー</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>playerId (String)</dt>
+<dd><p class="first last">構造を共通化するためのダミー</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id1">
+<h3>リクエストの例<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">appId</span><span class="o">:</span> <span class="s1">&#39;12345&#39;</span><span class="p">,</span>
+    <span class="nx">appUrl</span><span class="o">:</span> <span class="s1">&#39;http://example.jp/gadget.xml&#39;</span><span class="p">,</span>
+    <span class="nx">ownerId</span><span class="o">:</span> <span class="s1">&#39;12345678&#39;</span><span class="p">,</span>
+    <span class="nx">viewerId</span><span class="o">:</span> <span class="s1">&#39;12345678&#39;</span><span class="p">,</span>
+    <span class="nx">deviceType</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nx">paymentId</span><span class="o">:</span> <span class="s1">&#39;01234-567890-12....&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>レスポンスの例<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">isValid</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">code</span><span class="o">:</span><span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">エラーコード</th>
+<th class="head">説明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>400</td>
+<td>マスタ設定が不足している等、処理が継続できない</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="do_payment_item_grant.html" class="btn btn-neutral float-right" title="doPaymentItemGrant" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="is_valid_payment_request_browser.html" class="btn btn-neutral" title="isValidPaymentRequestBrowser" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright atomitech 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

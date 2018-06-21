@@ -1,0 +1,54 @@
+.. include:: ../../../definition.txt
+
+====================
+timerDelete
+====================
+
+リクエストした |defTimer| を削除するAPIです。
+
+.. code-block:: js
+
+    timerDelete(TimerDeleteRequest) => TimerDeleteResult 
+
+
+Requests
+==========
+
+* statusId (int)
+    削除する |defTimer| の |defId|
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        statusId: 1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20700,不正な statusId がリクエストされました

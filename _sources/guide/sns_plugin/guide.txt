@@ -1,0 +1,27 @@
+.. include:: ../../definition.txt
+
+==============================
+SnsPlugin について
+==============================
+
+SnsPlugin を使用すると、SNS連携機能が利用可能となります。
+
+* :doc:`ranking <./ranking>`
+    ランキング情報の取得機能です。
+
+* :doc:`twitter <./twitter>`
+    Twitter アカウントとの連携機能です。
+
+* :doc:`facebook <./facebook>`
+    Facebook アカウントとの連携機能です。
+
+* :doc:`kiq_social <./kiq_social>`
+    独自フレンド管理機能です。
+
+* :doc:`connect <./connect>`
+    |defUser| のプロフィールデータを保存したり、フレンドのプロフィールデータを取得する機能です。
+
+* :doc:`present <./present>`
+    SNSのフレンドにプレゼントを贈る機能です。
+
+

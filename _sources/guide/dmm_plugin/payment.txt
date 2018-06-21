@@ -1,0 +1,23 @@
+.. include:: ../../definition.txt
+
+==============================
+DMM課金処理 内部API
+==============================
+
+DMM APIサーバからのクエリで課金処理をおこなうための内部APIです。
+
+クエリパラメータと ``game_id`` の対応、および、
+DMM APIサーバから送付されるJSONに含まれる ``sku_id`` と |defContent| の対応は、
+マスタのデータベースに登録します。
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/dmm_plugin/payment/is_valid_payment_request_browser`,決済確認リクエストの検証
+    :doc:`../../api/dmm_plugin/payment/set_user_id_to_payment_id`,決済確定リクエストの記録
+    :doc:`../../api/dmm_plugin/payment/do_payment_item_grant`,課金完了後の付与処理
+

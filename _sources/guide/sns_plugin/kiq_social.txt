@@ -1,0 +1,20 @@
+.. include:: ../../definition.txt
+
+==============================
+KiqSocial API
+==============================
+
+SNS連携せずにゲーム内の |defUser| |defId| の連携や、引継操作を提供します。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/sns_plugin/kiq_social/sns_account_unregister`,SNS連携を解除
+    :doc:`../../api/sns_plugin/kiq_social/sns_kiq_register`,SNS連携しない場合のアカウント登録
+    :doc:`../../api/sns_plugin/kiq_social/sns_kiq_account_move`,SNS連携しない場合のアカウント引継
+

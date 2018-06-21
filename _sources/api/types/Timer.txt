@@ -1,0 +1,27 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+Timer
+====================
+
+|defTimer| の情報を格納します
+
+Parameters
+====================
+
+* statusId (int)
+    |defTimer| の |defId|
+* configId (int)
+    |defTimer| 設定 |defId|
+* state (enum)
+     |defTimer| の状態
+* point (int)
+    現在ポイント
+* lastUpdate (long)
+    最終ポイント更新日時
+* countInterval (int)
+    ポイント増加間隔
+* maxPoint (int)
+    最大ポイント

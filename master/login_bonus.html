@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>LoginBonus マスタ &mdash; basic-plugin 0.1 ドキュメント</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/basicplugin_icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="basic-plugin 0.1 ドキュメント" href="../index.html"/>
+        <link rel="up" title="マスタデータ設定仕様" href="index.html"/>
+        <link rel="next" title="Provider マスタ" href="provider.html"/>
+        <link rel="prev" title="GameInfo マスタ" href="game_info.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> basic-plugin
+          
+
+          
+            
+            <img src="../_static/basicplugin.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide/index.html">概要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detail/index.html">詳細仕様</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">マスタデータ設定仕様</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#basicplugin">BasicPlugin</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="content.html">Content マスタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exchange.html">Exchange マスタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gacha.html">Gacha マスタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_info.html">GameInfo マスタ</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">LoginBonus マスタ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">LoginBonus マスタの持つ属性値</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">週間 LoginBonus の設定例</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="provider.html">Provider マスタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ranking.html">Ranking マスタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stage_clear.html">StageClear マスタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timer.html">Timer マスタ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#androidplugin">AndroidPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#iosplugin">IosPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#snsplugin">SnsPlugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API 仕様</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">basic-plugin</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">マスタデータ設定仕様</a> &raquo;</li>
+      
+    <li>LoginBonus マスタ</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/master/login_bonus.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defloginbonus">
+<h1>LoginBonus マスタ<a class="headerlink" href="#defloginbonus" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>LoginBonus マスタでは、カウントの期間、カウント切り替え時刻、プレイヤーに付与される Content とその個数を定義します。</p>
+<p>プレイヤーのログインカウントを扱う為には、 LoginBonus マスタにカウントの期間と切り替え時刻の設定が必須です。</p>
+<p>また LoginBonus は、期間内に1つの設定のみ有効となります。</p>
+<p>以下にマスタの持つ属性値を記載します。</p>
+<div class="section" id="id1">
+<h2>LoginBonus マスタの持つ属性値<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>data_version</dt>
+<dd><p class="first">定義を行うマスタのバージョン</p>
+<p>型 : 文字列</p>
+<p>必須 : yes</p>
+<p>入力可能文字数 : 1-32</p>
+<p class="last">備考 : DataVersion については <a class="reference internal" href="data_version.html"><em>DataVersion</em></a> を参照</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>login_bonus_id</dt>
+<dd><p class="first">各 LoginBonus の 識別子</p>
+<p>型 : 整数値</p>
+<p>必須 : yes</p>
+<p class="last">範囲 : 0-9999</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>across_time</dt>
+<dd><p class="first">カウント切り替え時刻</p>
+<p>型 : 文字列 ( &#8220;05:00&#8221; )</p>
+<p>必須 : yes</p>
+<p class="last">備考 : 確認処理にて、1日の始まりを扱う時刻を指定</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>active_from</dt>
+<dd><p class="first">カウント期間の開始日時</p>
+<p>型 : 文字列 (フォーマット &#8220;yyyy-MM-dd HH:mm:ss&#8221; )</p>
+<p class="last">必須 : yes</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>active_to</dt>
+<dd><p class="first">カウント期間の終了日時</p>
+<p>型 : 文字列 (フォーマット &#8220;yyyy-MM-dd HH:mm:ss&#8221; )</p>
+<p class="last">必須 : yes</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>continue_count</dt>
+<dd><p class="first">ボーナスが付与されるログインカウント数</p>
+<p>型 : 整数値</p>
+<p>必須 : no</p>
+<p>範囲 : 0-9999</p>
+<p class="last">備考 : <code class="docutils literal"><span class="pre">add_content_id</span></code> を定義した場合は必須</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>add_content_id</dt>
+<dd><p class="first">プレゼントとして付与される Content の 識別子</p>
+<p>型 : 整数値</p>
+<p>必須 : no</p>
+<p class="last">範囲 : 0-99999</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>add_amount</dt>
+<dd><p class="first">付与される Content の個数</p>
+<p>型 : 整数値</p>
+<p>必須 : no</p>
+<p>範囲 : 0-99999</p>
+<p class="last">備考 : <code class="docutils literal"><span class="pre">add_content_id</span></code> を定義した場合は必須</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>description</dt>
+<dd><p class="first">ボーナスがプレゼントされた際のメッセージ内容</p>
+<p>型 : 文字列</p>
+<p>必須 : no</p>
+<p>入力可能文字数 : 1-128</p>
+<p class="last">備考 : <code class="docutils literal"><span class="pre">add_content_id</span></code> を定義した場合は必須</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="id2">
+<h3>LoginBonus のひな形<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference download internal" href="../_downloads/login_bonus.xlsx"><code class="xref download docutils literal"><span class="pre">Download:</span> <span class="pre">LoginBonusマスタひな形</span></code></a></p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>週間 LoginBonus の設定例<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>2017年1月1日～7日まで毎日初回ログイン時に「素材A」を付与、2017年1月8日～14日まで毎日初回ログイン時に「素材B」を付与する LoginBonus の設定例です。
+5:00をゲーム内の日付が変更される時間とし、一週間で7回(毎日)ログインしたプレイヤーには「素材C」を追加で付与するよう設定します。</p>
+<p><a class="reference download internal" href="../_downloads/login_bonus_per_month.zip"><code class="xref download docutils literal"><span class="pre">Download:</span> <span class="pre">LoginBonusマスタの設定例1</span></code></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="provider.html" class="btn btn-neutral float-right" title="Provider マスタ" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="game_info.html" class="btn btn-neutral" title="GameInfo マスタ" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright atomitech 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

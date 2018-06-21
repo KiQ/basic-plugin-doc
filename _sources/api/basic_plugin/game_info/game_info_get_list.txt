@@ -1,0 +1,62 @@
+.. include:: ../../../definition.txt
+
+=======================
+gameInfoGetList
+=======================
+
+|defGameInfo| の一覧を取得するAPIです。
+
+.. code-block:: js
+
+    gameInfoGetList(GameInfoGetListRequest) => GameInfoGetListResult
+
+Requests
+==========
+
+* None
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* gameInfoList (list<:doc:`../../types/GameInfo`>)
+	取得したゲーム情報のリスト
+
+	備考 : 1つも登録されていない場合、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        gameInfoList: [
+            {
+                key: 'data_version',
+                value: 'versionA'
+            },
+            {
+                key: 'maintenance',
+                value: '2016/09/01 12:34:56'
+            }
+        ]
+    }
+
+Errors
+==========
+
+API固有のエラーは定義されていません。

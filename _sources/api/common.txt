@@ -1,0 +1,68 @@
+.. include:: ../definition.txt
+
+==============================
+BasicPlugin APIについて
+==============================
+
+BasicPluginとは、各機能をクライアントに提供するためのAPIです。
+
+Returns
+==========
+
+* success (bool)
+    APIの成否です。
+
+    すべてのAPIの戻り値に、必ず含まれます。
+
+* errorCode (optional, int)
+    ``success`` がfalseの時に返すエラーコードです。
+
+    発生したエラーによって固有の値を返します。
+
+* errorMessage (optional. string)
+    ``success`` がfalseの時に返すエラーメッセージです。
+
+    発生したエラーによって固有の内容を返します。
+
+* apiResult (optional, object)
+    API呼び出し結果です。複数定義することができます。
+
+    ``success`` が false の時は返しません。
+
+.. code-block:: js
+
+    {
+        success: false,
+        errorCode: 20000,
+        errorMessage: 'Invalid parameter',
+        apiResult1: {
+            resultValue1: 5678,
+            resultValue2: 'result parameter'
+        },
+        apiResult2: 'result parameter'
+    }
+
+Errors
+==========
+
+API 実行時に発生したエラーには、すべての API に共通して戻すものと、各APIが戻す固有のものがあります。
+
+以下に、全ての API に共通して戻すエラーは以下に示します。各 API が戻す固有のものは、各APIの Errors を参照してください。
+
+
+.. code-block:: js
+
+    {
+        success: false,
+        errorCode: 20000,
+        errorMessage: 'Invalid parameter'
+    }
+
+
+.. csv-table::
+:header: エラーコード, 説明
+    :widths: 3, 10
+
+        20000, 不正なパラメータがリクエストされました
+        20001, 不正な |defDataVersion| がリクエストされました
+    20002 ~ 30000, API 固有のエラーが発生しました

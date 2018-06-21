@@ -1,0 +1,20 @@
+.. include:: ../../definition.txt
+
+==============================
+OpenSocial設定情報管理 内部API
+==============================
+
+DMM APIサーバと通信する際に必要な OAuth パラメータを取得するための内部APIです。
+
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/dmm_plugin/opensocial/oauth_cert_get`,OAuthの署名検証用の公開鍵を取得する
+    :doc:`../../api/dmm_plugin/opensocial/oauth_consumer_secret_get`,OAuthのConsumer Secretを取得する
+

@@ -1,0 +1,72 @@
+.. include:: ../../../definition.txt
+
+====================
+timerGetList
+====================
+
+プレイヤーが持つ全ての |defTimer| の状態を一覧で取得するAPIです。
+
+.. code-block:: js
+
+    timerGetList(TimerGetListRequest) => TimerGetListResult
+
+Requests
+==========
+
+* None
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* timerList (list<:doc:`../../types/Timer`>)
+	取得した |defTimer| のリスト
+
+	備考 : 1つも |defTimer| を取得できなかった場合、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        timerList: [
+            {
+                statusId: 1,
+                configId: 100,
+                state: 'FINISHED'
+                point: 500,
+                lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+                countInterval: 100,
+                maxPoint: 500
+            },
+            {
+                statusId: 2,
+                configId: 100,
+                state: 'RUNNING'
+                point: 100,
+                lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+                countInterval: 100,
+                maxPoint: 500
+            }
+        ]
+    }
+
+Errors
+==========
+
+API固有のエラーは定義されていません。

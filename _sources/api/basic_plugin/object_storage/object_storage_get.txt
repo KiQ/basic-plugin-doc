@@ -1,0 +1,64 @@
+.. include:: ../../../definition.txt
+
+====================
+objectStorageGet
+====================
+
+|defObjectStorage| からリクエストしたキーのデータを取得します。
+
+.. code-block:: js
+
+    objectStorageGet(ObjectStorageGetRequest) => ObjectStorageGetResult 
+
+
+Requests
+==========
+
+* key (string)
+    取得するデータを示すキー
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* value (optional, binary)
+    取得したデータ
+
+* hash (optional, binary)
+    取得したデータのハッシュ値
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        key: 'key-A',
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        value:, /* binary */
+        hash: /* binary */
+    }
+
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20800, |defObjectStorage| 内に key が見つかりませんでした

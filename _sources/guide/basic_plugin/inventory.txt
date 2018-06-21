@@ -1,0 +1,113 @@
+.. include:: ../../definition.txt
+
+====================
+インベントリ機能
+====================
+
+BasicPlugin では、「ゲーム内通貨」「素材」「武器」「キャラクター」「スタミナ」「経験値」といった、
+マスタデータを :ref:`Content <guide-content>` と呼び、 :doc:`../../master/content` で定義します。
+定義した Content は ``content_id`` によって識別され、 プレイヤーデータを操作するためのマスタデータ設定では、Content を示す ``content_id`` が必要になります。
+
+また BasicPlugin では、「お金を所持している状態」「レベルが上がった状態」「スタミナが満タンの状態」といった、
+プレイヤーデータを保持するデータベースを :ref:`Inventory <guide-inventory>` と呼びます。
+マスタデータに定義された Content をプレイヤーデータとして扱い、プレイヤーがコンテンツを所持している状態にするためには、
+Content とその個数の情報を Inventory に入れる必要があり、各データは ``inventory_id`` によって識別されます。
+
+BasicPlugin のプレイヤーデータを操作する API は、基本 Inventory に対して作用します。
+
+
+各ゲームデータそのものを Content と呼び、 Inventory に入ることで実体を持つイメージです。
+
+以下、Content と Inventory の各々の詳細です。
+
+.. _guide-content:
+
+Content
+==========
+
+BasicPlugin では、ゲームデータを **Content** と呼び、主に以下の項目を :doc:`../../master/content` で定義します。
+
+Content の目的用途に合わせて様々なパラメータを持たせることができます。
+
+
+* Content の属性
+    ゲーム内での Content の属性を定義します。
+
+    このジャンルは、 1つの Content に対して 1つのジャンルを 1～128 文字の範囲内で任意に指定することができ、
+    これを用いてゲーム内で Content を属性ごとに扱うことができます。
+
+    例えば「キャラクターA～Z」までマスタデータとして定義されている Content の内、プレイヤーが「キャラクターA」「キャラクターC」を所持していたとき、
+    「キャラクターA～Z」に共通で "character" という属性が指定してあると、プレイヤーの所持しているキャラクターリストとして
+    簡単に「キャラクターA」「キャラクターC」を得ることができます。
+
+    適切な属性を設定することで ``content_id`` を指定して1つずつ所持しているか確認をする必要がなくなります。
+
+* Content の扱い方
+    :ref:`Inventory <guide-inventory>` で管理される Content の扱い方のルールを定義します。
+
+    この管理ルールについては、予め用意されたルールがあり、以下のルールから指定します。
+
+    * COUNTABLE
+        「ゲーム内通貨」や「スタミナ」等のプレイヤーの所持数の総数だけが必要なコンテンツ
+
+    * UNCOUNTABLE
+        「武器」や「キャラクター」等の同一 Content の中で異なるステータスを持たせたいコンテンツ
+
+    * PAYMENT
+        有償データとして、他の Content とは分けて管理したコンテンツ
+
+    指定できる各管理ルールの詳細については、 :doc:`../../master/content_class` を参照してください。
+
+* Content のシステム効果
+    Content の絡まない特殊なシステム効果を定義します。
+
+    このシステム効果は、予め用意された効果があり、以下の効果から指定できます。
+
+    * TIMER_EFFECT
+        経過時間を扱えるタイマー機能を持った :doc:`Timer <./timer>` の、経過時間を変動させる効果
+
+    * PROVIDER_EFFECT
+        一定時間毎にコンテンツを生成する機能を持った :doc:`Provider <./provider>` の経過時間を増加させる効果
+
+    指定できる各システム効果の詳細については、 :doc:`../../master/system_effect_type` を参照してください。
+
+
+具体的な Content のマスタデータの設定は、 :doc:`../../master/content` を参照してください。
+
+
+.. _guide-inventory:
+
+----------
+Inventory
+----------
+
+BasicPlugin では、プレイヤーデータを **Inventory** で保持します。
+そのため、プレイヤーデータを扱う API は、基本的に Inventory に対して作用します。
+
+また、Inventory にあるプレイヤーデータの消費や付与にはルールがあります。
+
+
+--------------------
+消費・付与のルール
+--------------------
+
+
+Content の加算・減算が行われる際、対象 Content の content_type の属性によって、異なる挙動をします。
+
+
+
+加算について
+--------------------
+
+* 加算対象となった Content が |defCountable| の場合、同一の ``content__id`` を持つ Content に追加します。
+* 加算対象となった Content が |defUncountable| の場合、 Inventory の末尾に加算する個数分 Content を追加する。
+* 加算対象となった Content が |defPayment| の場合、 Inventory の末尾に追加する。
+
+減算について
+--------------------
+
+* 減算対象となった Content が |defCountable| の場合、 同一の ``content_id`` を持つ Content を減算します。
+* 減算対象となった Content が |defUncountable| の場合、Inventory に追加された順に減算します。
+* 減算対象となった Content が |defPayment| の場合、有効期限が近い順に減算します。有効期限が同一な場合は、 Inventory に追加された順に減算します。
+
+

@@ -1,0 +1,20 @@
+.. include:: ../../definition.txt
+
+==============================
+Present API
+==============================
+
+フレンドへのプレゼント送信機能を提供します。
+
+贈るプレゼントの |defContent| と、消費する |defContent| は :doc:`../../master/sns_friend_present` で設定します。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/sns_plugin/present/sns_present_send`,フレンドへのプレゼント
+

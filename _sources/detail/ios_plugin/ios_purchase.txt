@@ -1,0 +1,94 @@
+.. include:: ../../definition.txt
+
+==============================
+IosPurchase
+==============================
+
+IosPlugin では、 iOS の決済に対応しています。
+
+端末で決済した際に得られる「レシート」を使って、マスタ設定に従って |defContent| を |defUser| に付与します。
+
+端末側　決済時
+===========
+
+決済後、レシートを取得します。
+
+
+サーバ側　レシート検証と付与処理
+===========
+
+本APIでは、購入レシートをサーバに送付することで、 |defUser| に |defContent| を付与します。
+
+サーバ側では、付与前にレシートの検証と内容の確認をおこないます。
+
+* 署名検証
+
+マスタで登録されている Apple の署名検証サーバをもちいて、署名を検証する。
+
+* 重複付与の回避
+
+すでに送付されたことがあるレシートでは、付与を行わない。
+
+送付済みレシートかどうかの判定は、レシートに含まれる以下の値を使用する。
+
+.. csv-table::
+    :header: サービス状態, 使用フィールド
+    :widths: 3, 10
+
+        本サービス時, ``transactionId`` フィールド
+        テスト時, ``transactionId`` フィールド
+
+
+同一のレシートが複数回送付されてきた場合、2回目以降について、APIは成功扱いとするが付与はおこなわない。
+
+クライアントは保持しているレシートの再送を任意でおこなえる。
+
+
+* レシートのプロダクトIDから、付与するコンテンツを決定する
+
+レシートに含まれる ``product id`` と、ゲーム内で付与する |defContent| は、 |defIapSalesItem| マスタで設定する。
+
+
+* レシートの記録
+
+レシートと検証結果をデータベースに記録する。
+
+書き込み先は player_iapurchase_verify_receipt_logs テーブル。
+
+* 付与
+
+課金時のアイテム付与では、以下の処理をおこなう。
+
+
+  * インベントリへのアイテムの付与
+
+  |defIapSalesItem| マスタにあるとおり、 |defContent| を付与する。
+
+  * 課金アイテムの取得の記録
+
+  player_payment_income_history テーブルに、課金によるアイテム取得を記録する。
+
+  payment_id は、 "IAP_xxx" が記録される（xxxは、 player_iapurchase_verify_receipt_logs の値）。
+
+
+マスタ
+===========
+
+.. csv-table::
+    :header: マスタ名称, サービス
+    :widths: 3, 10
+
+        iap_sales_item, :doc:`../../../master/ios_iap_sales_item`
+
+
+API
+===========
+
+.. csv-table::
+    :header: API名称, ドキュメント
+    :widths: 3, 10
+
+        iosPurchaseReceiptsSend, :doc:`../../../api/ios_plugin/purchase/iosPurchaseReceiptsSend`
+
+
+

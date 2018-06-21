@@ -1,0 +1,69 @@
+.. include:: ../../../definition.txt
+
+====================
+presentOpen
+====================
+
+Inventory にある Present を指定して開封処理をするAPIです。
+
+Present が開封されると、 |defPresent| に定義された コンテンツ が |defInventory| に追加され、開封された |defPresent| は削除されます。
+
+.. code-block:: js
+
+    presentOpen(PresentOpenRequest) => PresentOpenResult 
+
+
+Requests
+==========
+
+* inventoryId (int)
+    開封を行う |defPresent| の |defInventory|  |defId|
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* updateInventoryElementList (optional, list<:doc:`../../types/InventoryElement`>)
+    更新された |defInventory| のリスト
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        inventoryId: 1000,
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        updateInventoryElementList: [
+            {
+                inventoryId: 1001,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 10,
+                description: 'Present',
+                isPayment: false
+            }
+        ]
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20200,不正な inventoryId がリクエストされました

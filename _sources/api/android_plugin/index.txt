@@ -1,0 +1,13 @@
+
+====================
+AndroidPlugin API 仕様
+====================
+
+
+Purchase
+====================
+
+.. toctree::
+   :maxdepth: 2
+
+   purchase/androidPurchaseReceiptsSend

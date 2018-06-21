@@ -1,0 +1,50 @@
+.. include:: ../definition.txt
+
+==============================
+|defTwitterConf| マスタ
+==============================
+
+Twitter関連の設定を記載するマスタです。
+
+以下にマスタの持つ属性値を記載します。
+
+|defTwitterConf| マスタの持つ属性値
+
+=======================================
+
+
+* endpoint
+    Twitter APIのエンドポイントURL
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-1024
+
+
+* consumer_key
+    OAuth Consumer Key
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-128
+
+* consumer_secret
+    OAuth Consumer Secret
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-128
+
+
+--------------------------------------------------
+|defTwitterConf| のひな形
+--------------------------------------------------
+
+:download:`Download: TwitterConf マスタひな形<./resources/mst_data/sns/plain_example/twitter_conf.xlsx>`
+

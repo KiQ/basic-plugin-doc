@@ -1,0 +1,22 @@
+
+==============================
+BasicPlugin 概要
+==============================
+
+この章では、 BasicPlugin の概要や各機能について説明します。
+
+.. toctree::
+   :maxdepth: 1
+
+   guide
+   inventory
+   exchange
+   gacha
+   login_bonus
+   present
+   timer
+   provider
+   ranking
+   stage_clear
+   game_info
+   object_storage

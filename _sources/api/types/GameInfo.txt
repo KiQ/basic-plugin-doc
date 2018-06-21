@@ -1,0 +1,17 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+==========
+GameInfo
+==========
+
+|defGameInfo| を格納します
+
+Parameters
+====================
+  
+* key (string)
+    |defGameInfo| を示すキー値
+* value (string)
+    ゲーム情報

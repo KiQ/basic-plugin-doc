@@ -1,0 +1,37 @@
+
+====================
+DmmPlugin API 仕様
+====================
+
+
+LoginBrowser
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   login_browser/login_browser
+
+
+Payment
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   payment/is_valid_payment_request_browser
+
+   payment/set_user_id_to_payment_id
+
+   payment/do_payment_item_grant
+
+
+OpenSocial
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   opensocial/oauth_consumer_secret_get
+
+   opensocial/oauth_cert_get

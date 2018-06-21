@@ -1,0 +1,53 @@
+.. include:: ../../../definition.txt
+
+====================
+objectStorageDelete
+====================
+
+|defObjectStorage| からリクエストしたキーのデータを削除します。
+
+.. code-block:: js
+
+    objectStorageDelete(ObjectStorageDeleteRequest) => ObjectStorageDeleteResult
+
+Requests
+==========
+
+* key (string)
+    削除を行うデータを示すキー
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        key: 'key-A',
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20800, |defObjectStorage| 内に key が見つかりませんでした

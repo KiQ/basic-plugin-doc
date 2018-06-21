@@ -1,0 +1,23 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+InventoryElement
+====================
+
+|defInventory| 内容を格納します
+
+Parameters
+====================
+  
+* inventoryId (int)
+    |defInventory| の |defId|
+* contentId (int)
+    |defContent| の |defId|
+* contentType (string)
+    |defContent| の種別
+* amount (int)
+    数量
+* description (string)
+    説明

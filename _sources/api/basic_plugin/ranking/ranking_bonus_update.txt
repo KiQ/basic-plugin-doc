@@ -1,0 +1,117 @@
+.. include:: ../../../definition.txt
+
+====================
+rankingBonusUpdate
+====================
+
+|defRanking| |defId| を指定して、 |defBonus| を取得する API です。
+
+.. code-block:: js
+
+    rankingBonusUpdate(RankingBonusUpdateRequest ) => RankingBonusUpdateResult 
+
+.. _api-RankingBonusUpdateResult:
+
+Requests
+==========
+
+* rankingId (int)
+    |defBonus| を取得する :doc:`../../../master/ranking` の  ``ranking_id`` 定義値
+
+.. _api-registerRankingResult:
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* rank (long)
+    順位
+
+* score (int)
+    スコア
+
+* addPresentList(List<:doc:`../../types/Present`>)
+    付与した  |defPresent|  のリスト
+
+    備考 : 付与された  |defPresent|  がない場合、空のリストを返す
+
+* updateInventoryElementList(List<:doc:`../../types/InventoryElement`>)
+    更新された |defInventory|  のリスト
+    
+    備考 : 更新がなかった場合、空のリストを返す
+
+* errorCode (int)
+    API失敗時のエラーコード
+
+* errorMessage (String)
+    API失敗時のエラーメッセージ
+
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        rankingId: 1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        addPresentList: [
+            {
+                inventoryId: 1000,
+                contentId: 10,
+                amount: 10,
+                description: ''
+            },
+            {
+                inventoryId: 2000,
+                contentId: 20,
+                amount: 10,
+                description: '',
+                expireDate: 1460041200000  /* Epoch milliseconds : 2016/4/8 0:0:0 */
+            }
+        ],
+        updateInventoryElementList: [
+            {
+                inventoryId: 1000,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 5,
+                description: '',
+                isPayment: false
+            },
+            {
+                inventoryId: 2000,
+                contentId: 20,
+                contentType: 'type-02',
+                amount: 9,
+                description: '',
+                isPayment: false
+            }
+        ]
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+    
+        21100, |defRanking| |defId| が見つかりません
+        21101,現在 |defRanking| |defId| は実施期間ではない
+
+

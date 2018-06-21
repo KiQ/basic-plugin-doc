@@ -1,0 +1,61 @@
+.. include:: ../../../definition.txt
+
+====================
+sploginGetNonce
+====================
+
+ :doc:`splogin_login_get_uuid` APIで使用するための |defNonce| を取得する。
+
+.. code-block:: js
+
+    sploginGetNonce(SploginGetNonceRequest) => SploginGetNonceResult 
+
+
+Requests
+==========
+
+* None
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* nonce (String)
+     |defNonce| 
+
+* errorCode (int)
+    API失敗時のエラーコード
+
+* errorMessage (String)
+    API失敗時のエラーメッセージ
+
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        nonce: '0123456789'
+    }
+
+Errors
+==========
+
+API固有のエラーは定義されていません。
+

@@ -1,0 +1,115 @@
+.. include:: ../definition.txt
+
+==============================
+|defLoginBonus| マスタ
+==============================
+
+|defLoginBonus| マスタでは、カウントの期間、カウント切り替え時刻、プレイヤーに付与される |defContent| とその個数を定義します。
+
+プレイヤーのログインカウントを扱う為には、 |defLoginBonus| マスタにカウントの期間と切り替え時刻の設定が必須です。
+
+また |defLoginBonus| は、期間内に1つの設定のみ有効となります。
+
+以下にマスタの持つ属性値を記載します。
+  
+|defLoginBonus| マスタの持つ属性値
+----------------------------------------
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-32
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+* login_bonus_id  
+    各 |defLoginBonus| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-9999
+
+* across_time  
+    カウント切り替え時刻
+
+    型 : 文字列 ( "05:00" )
+
+    必須 : yes
+
+    備考 : 確認処理にて、1日の始まりを扱う時刻を指定
+    
+* active_from
+    カウント期間の開始日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* active_to
+    カウント期間の終了日時
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss" )
+
+    必須 : yes
+
+* continue_count
+    ボーナスが付与されるログインカウント数
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-9999
+
+    備考 : ``add_content_id`` を定義した場合は必須
+
+* add_content_id
+    プレゼントとして付与される |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+* add_amount
+    付与される |defContent| の個数
+
+    型 : 整数値
+
+    必須 : no
+
+    範囲 : 0-99999
+
+    備考 : ``add_content_id`` を定義した場合は必須
+
+* description
+    ボーナスがプレゼントされた際のメッセージ内容
+
+    型 : 文字列
+
+    必須 : no
+
+    入力可能文字数 : 1-128
+
+    備考 : ``add_content_id`` を定義した場合は必須
+
+--------------------------------------------------
+|defLoginBonus| のひな形
+--------------------------------------------------
+
+:download:`Download: LoginBonusマスタひな形<./resources/mst_data/plain_example/login_bonus.xlsx>`
+
+週間 |defLoginBonus| の設定例
+------------------------------
+
+2017年1月1日～7日まで毎日初回ログイン時に「素材A」を付与、2017年1月8日～14日まで毎日初回ログイン時に「素材B」を付与する |defLoginBonus| の設定例です。
+5:00をゲーム内の日付が変更される時間とし、一週間で7回(毎日)ログインしたプレイヤーには「素材C」を追加で付与するよう設定します。
+
+:download:`Download: LoginBonusマスタの設定例1<./resources/mst_data/recipe/login_bonus_per_month/login_bonus_per_month.zip>`

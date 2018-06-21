@@ -1,0 +1,80 @@
+.. include:: ../../../definition.txt
+
+==========
+accountGetData
+==========
+
+SNSのプロファイル情報文字列を取得するAPIです。
+
+accountSetDataで登録します。
+
+.. code-block:: js
+
+    accountGetData(AccountGetDataRequest ) => AccountGetDataResult  
+
+Requests
+==========
+
+* sndIds (SnsIds)
+    取得したいSNS IDを格納した :doc:`../types/SnsIds`
+
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* errorCode (optional, int)
+    API失敗時のエラーコード
+
+* errorMessage (optional, String)
+    API失敗時のエラーメッセージ
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        snsIds: {
+            snsType: 'TWITTER',
+            snsIdList: ['111111','222222','333333']
+        }
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        snsProfileInfo: {
+            snsType: 'TWITTER',
+            snsProfiles: {
+                '111111': '{...}',
+                '222222': '{...}',
+                '333333': '{...}'
+            }
+        }
+    }
+
+
+Errors FIXME 現物にあわせる
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        80001,指定されたSNS IDはすでに登録されています
+        80002,SNSサーバに接続できません
+        80003,SNSサーバでの認証に失敗しました
+        80007,指定されたSNS IDは停止中です。
+        80008,mst_twitter_conf、mst_facebook_confのマスタ設定がない
+

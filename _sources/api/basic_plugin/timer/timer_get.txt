@@ -1,0 +1,69 @@
+.. include:: ../../../definition.txt
+
+====================
+timerGet
+====================
+
+リクエストした |defTimer| の状態を取得します。
+
+.. code-block:: js
+
+    timerGet(TimerGetRequest) => TimerGetResult 
+
+
+Requests
+==========
+
+* statusId (int)
+    状態を取得したい |defTimer| の |defId|
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* timer (optional, :doc:`../../types/Timer`)
+    取得した |defTimer| の状態
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        statusId: 1
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        timer: {
+            statusId: 1,
+            configId: 100,
+            state: 'RUNNING'
+            point: 100,
+            lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+            countInterval: 100,
+            maxPoint: 500
+        }
+    }
+
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20700, 不正な statusId がリクエストされました
+

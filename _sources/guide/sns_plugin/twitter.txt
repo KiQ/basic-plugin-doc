@@ -1,0 +1,19 @@
+.. include:: ../../definition.txt
+
+==============================
+Twitter API
+==============================
+
+Twitter アカウントとゲーム内の |defUser| |defId| の連携や、引継操作を提供します。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/sns_plugin/twitter/sns_twitter_register`,アカウント連携
+    :doc:`../../api/sns_plugin/twitter/sns_twitter_account_move`,Twitter アカウントを使った引継
+

@@ -1,0 +1,57 @@
+.. include:: ../../../definition.txt
+
+====================
+providerDelete
+====================
+
+|defProvider| を削除するAPIです。
+
+|defProvider| の ``configId`` をリクエストし、該当する |defProvider| を削除します。
+
+
+.. code-block:: js
+
+    providerDelete(ProviderDeleteRequest) => ProviderDeleteResult
+
+Requests
+==========
+
+* providerConfigId (int)
+    削除する |defProvider| の ``configId``
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        providerConfigId: 1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        20900,不正な configId がリクエストされました
+        20902,存在しない configId がリクエストされました

@@ -1,0 +1,24 @@
+.. include:: ../../definition.txt
+
+==============================
+|defUuid| の取得
+==============================
+
+|defUser| は、初回接続時に |defUuid| の取得をおこないます。
+
+このためのAPIが、 :doc:`../../api/splogin_plugin/login/splogin_login_get_nonce` 
+と :doc:`../../api/splogin_plugin/login/splogin_login_get_uuid` です。
+
+:doc:`../../api/splogin_plugin/login/splogin_login_get_uuid` をコールするときに
+端末の情報をつけて送信します。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/splogin_plugin/login/splogin_login_get_nonce`,|defUuid| を取得する際に使用する |defNonce| を取得します。
+    :doc:`../../api/splogin_plugin/login/splogin_login_get_uuid`,|defNonce| を使って |defUuid| を取得します。

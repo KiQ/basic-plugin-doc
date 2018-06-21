@@ -1,0 +1,80 @@
+.. include:: ../../../definition.txt
+
+====================
+providerUpdate
+====================
+
+|defProvider| を更新するAPIです。
+
+|defProvider| の ``configId`` をリクエストし、その設定値を使用した |defProvider| を更新します。
+最終更新と現在の時刻の差を ``countInterval`` で割った値が 0 より大きい場合、その値の数だけ設定した |defContent| の個数を追加します。
+ただし、 |defProvider| 設定の上限値を超えることはできません。、
+
+.. code-block:: js
+
+    providerUpdate(ProviderDeleteRequest) => ProviderDeleteResult
+
+Requests
+==========
+
+* providerConfigId (int)
+    更新する |defProvider| の |defId|
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* provider (optional, :doc:`../../types/Provider` )
+    更新された |defProvider| の情報
+
+* updateInventoryElementList (optional, list<:doc:`../../types/InventoryElement`>)
+    更新された Inventory の内容
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        providerConfigId: 1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        provider: {
+            configId: 1,
+            lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+            countInterval: 100
+        },
+        updateInventoryElementList: [
+            {
+                inventoryId: 7001,
+                contentId: 7
+                contentType: 'Stamina',
+                amount: 44,
+                description: 'クエスト用スタミナ',
+                isPayment: false
+            }
+        ]
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        20900,不正な configId がリクエストされました
+        20902,存在しない configId がリクエストされました

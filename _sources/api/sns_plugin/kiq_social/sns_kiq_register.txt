@@ -1,0 +1,99 @@
+.. include:: ../../../definition.txt
+
+==========
+kiqRegister (仮)
+==========
+
+プレイヤーが |defInventory| 内に所持している |defContent| を消費し、新しい |defContent| を付与するAPIです。
+
+.. code-block:: js
+
+    exchange(ExchangeRequest) => ExchangeResult
+
+Requests
+==========
+
+``inventoryIdList`` は省略することができます。
+
+* exchangeId (int)
+    交換の |defId|
+
+* inventoryIdList (optional, list<int>)
+    消費する |defInventory| のリスト
+
+    備考 : 省略した際の |defInventory| の消費方法は :doc:`../inventory_rule` を参照
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* updateInventoryElementList (list<:doc:`../../types/InventoryElement`>)
+    更新された |defInventory| のリスト
+
+    備考 : 更新された :doc:`../../types/InventoryElement がない時、空のリストを返す
+
+* deleteInventoryElementList (list<:doc:`../../types/InventoryElement`>)
+    削除された |defInventory| のリスト
+
+    備考 : 削除された :doc:`../../types/InventoryElement がない時、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        exchangeId: 1,
+        inventoryIdList: [2001, 3001, 4001]
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        updateInventoryElementList: [
+            {
+                inventoryId: 1000,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 5,
+                description: ''
+            },
+            {
+                inventoryId: 2000,
+                contentId: 20,
+                contentType: 'type-02',
+                amount: 9,
+                description: ''
+            }
+        ],
+        deleteInventoryElementList: [
+            {
+                inventoryId: 3000,
+                contentId: 30,
+                contentType: 'type-03',
+                amount: 1,
+                description: ''
+            }
+        ]
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20200,不正な ``inventoryIdList`` がリクエストされました
+    20201,消費する |defContent| が |defInventory| に存在していません
+    20300,不正な ``exchangeId`` がリクエストされました

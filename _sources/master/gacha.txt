@@ -1,0 +1,127 @@
+.. include:: ../definition.txt
+
+====================
+|defGacha| マスタ
+====================
+
+|defGacha| マスタでは、 |defGacha| を実行した際に排出を行う |defContent| 、抽選時の重み、対価として消費が行われる |defContent| を定義します。
+
+排出を行う |defContent| はパック |defId| でまとめることができ、複数のパックを定義すると排出 |defContent| を複数にすることができます。
+
+以下にマスタの持つ属性値を記載します。
+
+|defGacha| マスタの持つ属性値
+------------------------------
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-32
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+* gacha_id
+    |defGacha| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-9999
+
+* gacha_type
+    |defGacha| の種類
+
+	型 : 文字列
+
+	必須 : yes
+
+	備考 : 定義可能な |defGachaType| は :doc:`gacha_type` を参照
+
+* active_from
+	|defGacha| の有効期限の開始日時を示す
+
+	型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss")
+
+	必須 : no
+
+* active_to
+    |defGacha| の有効期限の終了日時を示す
+
+    型 : 文字列 (フォーマット "yyyy-MM-dd HH:mm:ss")
+
+    必須 : no
+
+* consume_content_id
+    対価として消費される |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* consume_amount
+    対価として消費される |defContent| の個数
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* pack_id
+    |defGacha| で排出される |defContent| をまとめたパック |defId|
+
+    型 : 整数値
+    
+    必須 : yes
+
+    範囲 : 0-999
+
+    備考 : 1つのパック識別子でまとめることのできる |defContent| は 99個まで
+
+* add_content_id
+    排出された際に付与される |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* add_amount
+    排出された際に付与される |defContent| の個数
+
+    型 : 整数値
+
+    必須 ：yes
+
+    範囲 : 0-99999
+
+* weight
+    抽選の際に使用される重み値
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+--------------------------------------------------
+|defGacha| のひな形
+--------------------------------------------------
+
+:download:`Download: Gachaマスタひな形<./resources/mst_data/plain_example/gacha.xlsx>`
+
+|defGacha00| |defGacha| の設定例
+------------------------------------------------------------
+
+課金コンテンツとして定義した Content を5つ消費して、「キャラクターA」,「キャラクターB」,「キャラクターC」の |defContent| の中からランダムに1つのキャラクター抽選する |defGacha| の設定例です。
+「キャラクターC」だけその他のキャラクターよりも2倍の確率で抽選されるように設定します。
+
+:download:`Download: Gachaの設定例1<./resources/mst_data/recipe/plain_gacha/plain_gacha.zip>`

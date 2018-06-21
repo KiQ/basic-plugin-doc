@@ -1,0 +1,13 @@
+
+==============================
+Android Plugin 仕様
+==============================
+
+この章では、 AndroidPlugin の詳細な仕様について説明します。
+
+.. toctree::
+   :maxdepth: 1
+
+   guide
+   android_purchase
+

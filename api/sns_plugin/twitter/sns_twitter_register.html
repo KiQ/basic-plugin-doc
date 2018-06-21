@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>accountRegisterTwitter &mdash; basic-plugin 0.1 ドキュメント</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/basicplugin_icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="basic-plugin 0.1 ドキュメント" href="../../../index.html"/>
+        <link rel="up" title="SnsPlugin API 仕様" href="../index.html"/>
+        <link rel="next" title="accountMoveTwitter" href="sns_twitter_account_move.html"/>
+        <link rel="prev" title="rankingGetByWindow" href="../ranking/sns_ranking_get_by_window.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> basic-plugin
+          
+
+          
+            
+            <img src="../../../_static/basicplugin.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/index.html">概要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../detail/index.html">詳細仕様</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../master/index.html">マスタデータ設定仕様</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API 仕様</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#basicplugin">BasicPlugin</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#snsplugin">SnsPlugin</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">SnsPlugin API 仕様</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#ranking">Ranking</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#twitter">Twitter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#facebook">Facebook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#kiqsocial">KiqSocial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#connect">Connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#present">Present</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#splogin-plugin">Splogin_Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#androidplugin">AndroidPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#iosplugin">IosPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#dmmplugin">DmmPlugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#data-type">Data Type</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">basic-plugin</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">API 仕様</a> &raquo;</li>
+      
+          <li><a href="../index.html">SnsPlugin API 仕様</a> &raquo;</li>
+      
+    <li>accountRegisterTwitter</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/api/sns_plugin/twitter/sns_twitter_register.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="accountregistertwitter">
+<h1>accountRegisterTwitter<a class="headerlink" href="#accountregistertwitter" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Twitterアカウントとの連携を登録するAPIです。</p>
+<p>利用時は、端末上でTwitter認証を行い、アクセストークンとトークンシークレットを取得してください。</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">accountRegisterTwitter</span><span class="p">(</span><span class="nx">AccountRegisterTwitterRequest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">AccountRegisterTwitterResult</span>
+</pre></div>
+</div>
+<div class="section" id="requests">
+<h2>Requests<a class="headerlink" href="#requests" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>account (String)</dt>
+<dd><p class="first last">SNS でのアカウント 識別子</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>accessToken (String)</dt>
+<dd><p class="first last">Twitter API利用のためのアクセストークン</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>accessTokenSecret (String)</dt>
+<dd><p class="first last">Twitter API利用のためのトークンシークレット</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>snsProfile (optional, String)</dt>
+<dd><p class="first last">SNSでの表示名など。記録内容、書式についてはAPIでは規定しない。</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>success (bool)</dt>
+<dd><p class="first last">APIの成否</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>errorCode (optional, int)</dt>
+<dd><p class="first last">API失敗時のエラーコード</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>errorMessage (optional, String)</dt>
+<dd><p class="first last">API失敗時のエラーメッセージ</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id1">
+<h3>リクエストの例<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">account</span><span class="o">:</span> <span class="s1">&#39;12345678&#39;</span><span class="p">,</span>
+    <span class="nx">accessToken</span><span class="o">:</span> <span class="s1">&#39;token12345678&#39;</span><span class="p">,</span>
+    <span class="nx">accessTokenSecret</span><span class="o">:</span> <span class="s1">&#39;tokenSecret12345678&#39;</span><span class="p">,</span>
+    <span class="nx">snsProfile</span><span class="o">:</span> <span class="s1">&#39;{...}&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>レスポンスの例<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="errors-fixme">
+<h2>Errors FIXME 現物にあわせる<a class="headerlink" href="#errors-fixme" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">エラーコード</th>
+<th class="head">説明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>80001</td>
+<td>指定されたSNS IDはすでに登録されています</td>
+</tr>
+<tr class="row-odd"><td>80002</td>
+<td>SNSサーバに接続できません</td>
+</tr>
+<tr class="row-even"><td>80003</td>
+<td>SNSサーバでの認証に失敗しました</td>
+</tr>
+<tr class="row-odd"><td>80007</td>
+<td>指定されたSNS IDは停止中です。</td>
+</tr>
+<tr class="row-even"><td>80008</td>
+<td>mst_twitter_conf、mst_facebook_confのマスタ設定がない</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sns_twitter_account_move.html" class="btn btn-neutral float-right" title="accountMoveTwitter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ranking/sns_ranking_get_by_window.html" class="btn btn-neutral" title="rankingGetByWindow" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright atomitech 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

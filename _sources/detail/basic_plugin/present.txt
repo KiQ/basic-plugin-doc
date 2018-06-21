@@ -1,0 +1,21 @@
+.. include:: ../../definition.txt
+
+====================
+Present
+====================
+
+|defPresent| とは、|defLoginBonus| によってプレイヤーにプレゼントとして付与された |defContent| です。
+
+|defPresent| として付与された |defContent| は、開封を行うことで使用することができるようになります。
+
+|defPresent| は有効期限を設定することができ、期限を過ぎたものは開封できなくなります。
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,15
+
+    :doc:`../../api/basic_plugin/present/present_open`,リクエストされた |defPresent| を開封します
+    :doc:`../../api/basic_plugin/present/present_get_list`,開封可能な |defPresent| の一覧を取得します

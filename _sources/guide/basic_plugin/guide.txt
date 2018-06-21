@@ -1,0 +1,36 @@
+
+==============================
+BasicPlugin について
+==============================
+
+BasicPlugin を使用すると、サーバロジックの開発やゲームサーバの運用をすることなく、オンライン対応のゲームアプリケーション開発を可能にします。
+
+
+BasicPlugin では、ゲームの構成要素を Content と呼びます。
+「アイテム」「ゲーム内通貨」「経験値」等、あらゆる要素を Content として扱います。
+
+* :doc:`Inventory <./inventory>`
+    プレイヤーの所持している Content を参照する機能です。
+
+* :doc:`Exchange <./exchange>`
+    Content 同士の交換機能です。
+
+* :doc:`Gacha <./gacha>`
+    ランダムに Content を抽選する機能です。
+
+* :doc:`LoginBonus <./login_bonus>`
+    プレイヤーのログイン回数に伴うボーナスを付与する機能です。
+
+* :doc:`Present <./present>`
+    プレゼントの管理が行えます。
+
+* :doc:`Timer <./timer>`
+    ゲーム内の時間経過を扱えます。
+
+* :doc:`Provider <./provider>`
+    一定時間毎に Content の付与を行えます。
+
+* :doc:`game_info <./game_info>`
+
+* :doc:`ObjectStorage <./object_storage>`
+

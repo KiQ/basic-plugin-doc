@@ -1,0 +1,23 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+====================
+RegisterRankingResult
+====================
+
+|defStageClear| でレスポンス StageClearResult に含まれる RegisterRankingRequest の結果を格納します
+
+Parameters
+====================
+
+* success (bool)
+    APIの成否
+* rankingId (optional, int)
+    |defRanking| の |defId|
+* registerRankingResultState (optional, <:doc:`RegisterRankingResultState`>)
+    登録結果
+* errorCode (optional, int)
+    API失敗時のエラーコード
+* errorMessage (optional, string)
+    API失敗時のエラーメッセージ

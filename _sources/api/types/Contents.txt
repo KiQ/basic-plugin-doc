@@ -1,0 +1,17 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.basic
+
+==========
+Contents
+==========
+
+|defContent| の |defId| と数量を格納します
+
+Parameters
+====================
+
+* contentId (int)
+    |defContent| の |defId|
+* amount (int)
+    数量

@@ -1,0 +1,108 @@
+.. include:: ../../../definition.txt
+
+====================
+accountMoveFacebook
+====================
+
+Facebook アカウントで引継ぎするAPIです。
+
+.. code-block:: js
+
+    accountMoveFacebook(AccountMoveFacebookRequest ) => AccountMoveFacebookResult 
+
+.. _api-AccountMoveFacebookRequest:
+
+Requests
+==========
+
+* account(String)
+    SNS でのアカウント |defId|
+
+* accessToken(String)
+    Facebook API利用のためのアクセストークン
+
+* deviceType(common.DeviceType)
+    |defDevice| |defId|
+
+* platformUserId(String)
+    |defDevice| 利用者 |defId|
+
+* countryCode(String)
+    国コード
+
+* currencyCode(String)
+    通貨コード
+
+* snsProfile(optional, String)
+    SNSでの表示名など。記録内容、書式についてはAPIでは規定しない。
+
+
+.. _api-AccountMoveFacebookResult:
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* uuid(String)
+     |defUuid| 
+
+* ccUuid(String)
+     |defCcUuid| 
+
+* errorCode (optional, int)
+    API失敗時のエラーコード
+
+* errorMessage (optional, String)
+    API失敗時のエラーメッセージ
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        account: '12345678',
+        accessToken: 'token12345678',
+        deviceType:'IOS',
+        platformUserId:'1234567890-1234567890',
+        countryCode:'jp',
+        currencyCode:'jpy'
+        snsProfile: '{...}'
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        uuid:'1234567890-1234567890',
+        ccUuid:'abcdefabcd-abcdefabcd'
+    }
+
+
+Errors FIXME 実装を確認
+==========
+
+
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        80000,指定されたSNS IDがありません
+        80002,SNSサーバに接続できません
+        80003,SNSサーバでの認証に失敗しました
+        80004,国コードが不正です
+        80005,通貨コードが不正です
+        80006,SNS IDが同一です。更新はおこなわれませんでした。
+        80007,指定されたSNS IDは停止中です。
+        80008,mst_twitter_conf、mst_facebook_confのマスタ設定がない

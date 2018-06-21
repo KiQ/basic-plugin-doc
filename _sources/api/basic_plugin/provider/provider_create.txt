@@ -1,0 +1,71 @@
+.. include:: ../../../definition.txt
+
+====================
+providerCreate
+====================
+
+|defProvider| を作成するAPIです。
+
+|defProvider| の ``configId`` をリクエストし、その設定値を使用した |defProvider| を作成し開始します。
+同一 ``configId`` からは1つの |defProvider| しか生成できません。
+
+.. code-block:: js
+
+    providerCreate(ProviderCreateRequest) => ProviderCreateResult
+
+Requests
+==========
+
+* providerConfigId (int)
+    使用する |defProvider| マスタの ``configId`` 定義値
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* lastUpdate (long)
+    最終ポイント更新日時
+
+* countInterval (int)
+    |defProvider| ポイントのカウント間隔
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        providerConfigId: 1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        updateProvider: {
+            configId: 1,
+            lastUpdate: 1459436400000,  /* Epoch milliseconds : 2016/4/1 0:0:0 */
+            countInterval: 100
+        }
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+        20900,不正な configId がリクエストされました
+        20901,既に |defProvider| が存在する configId がリクエストされました
+        20902,存在しない configId がリクエストされました
+

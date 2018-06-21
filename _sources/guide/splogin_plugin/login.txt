@@ -1,0 +1,21 @@
+.. include:: ../../definition.txt
+
+==============================
+|defLogin| 
+==============================
+
+|defLogin| は、 |defUuid| を使ってログイン処理をおこないます。
+
+ログインに成功すると、 |defSession|  |defId| を返却します。 |defSession|  |defId| は、以後のAPI呼び出しで使用します。
+
+Unityクライアントライブラリを利用する場合、 |defSession|  |defId| はライブラリに隠蔽されるため、意識する必要はありません。
+
+
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,10
+
+    :doc:`../../api/splogin_plugin/login/splogin_login_login`, |defUuid| によって |defLogin| をおこないます。

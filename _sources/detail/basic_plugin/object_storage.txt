@@ -1,0 +1,23 @@
+.. include:: ../../definition.txt
+
+==============================
+ObjectStorage
+==============================
+
+|defObjectStorage| とは、キーとバリューでペアとなっているデータを複数保存し管理することのできる機能です。
+
+キーには、ユーザ毎に一意なもののみ設定できます。
+
+バリューには、文字列だけでなくファイル内容のようなバイナリデータまで登録できます。
+  
+提供するAPI
+====================
+
+.. csv-table::
+    :header: API 名,説明
+    :widths: 3,15
+
+	:doc:`../../api/basic_plugin/object_storage/object_storage_add`, |defObjectStorage| にキーとバリューのペアを保存します
+	:doc:`../../api/basic_plugin/object_storage/object_storage_set`, |defObjectStorage| にキーとバリューのペアを保存します。キーが登録済みの場合上書き保存されます
+	:doc:`../../api/basic_plugin/object_storage/object_storage_delete`, |defObjectStorage| からリクエストしたキーとペアのバリューを削除します
+	:doc:`../../api/basic_plugin/object_storage/object_storage_get`, |defObjectStorage| にキーとバリューのセットを保存します

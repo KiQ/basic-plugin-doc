@@ -1,0 +1,16 @@
+.. include:: ../../definition.txt
+
+==============================
+SploginPlugin について
+==============================
+
+SploginPlugin は、 |defUser| がゲームを利用するために必要な、 |defUuid| の取得と、 |defLogin| を提供します。
+
+* :doc:`./get_uuid`
+     |defLogin| に使用する |defUuid| を取得します。取得した |defUuid| は、以後の |defLogin| で使用するため、保管します。
+
+* :doc:`./login`
+    登録で取得した |defUuid| を使って |defLogin| します。
+
+
+

@@ -1,0 +1,20 @@
+.. include:: ../../../definition.txt
+
+jp.atomitech.kiq.plugin.sns
+
+====================
+SnsIds
+====================
+
+SNS で取得結果に含まれる SndIds の内容を格納します
+
+Parameters
+====================
+
+* snsType (common.SnsType)
+    SNS 種別
+* snsIdList (List<string>)
+    SNS |defId| のリスト
+
+
+

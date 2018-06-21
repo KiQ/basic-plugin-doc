@@ -1,0 +1,113 @@
+.. include:: ../../../definition.txt
+
+====================
+setUserIdToPaymentId
+====================
+
+DMM APIサーバからOAuth署名された決済確定リクエストが届いたときに、 ownerIdの |defId| を |defPayment| |defId|  に紐付けて記録するための内部API。
+
+.. code-block:: js
+
+    setUserIdToPaymentId(int gameId,
+		String playerId,
+		String contentVersion,
+		SetUserIdToPaymentIdParam setUserIdToPaymentIdParam) => SetUserIdToPaymentIdResult 
+
+Requests
+==========
+
+* gameId (int)
+    外形を他APIと揃えるためのダミー
+
+* playerId (String)
+    外形を他APIと揃えるためのダミー
+
+* contentVersion (String)
+    外形を他APIと揃えるためのダミー
+
+* setUserIdToPaymentIdParam (SetUserIdToPaymentIdParam)
+    決済確認リクエストの内容
+
+IsValidPaymentParam 内容
+==========
+
+* appId (String)
+    リクエストのopensocial_app_id
+
+* appUrl (String)
+	リクエストのopensocial_app_url
+
+* ownerId (String)
+	リクエストのopensocial_owner_id
+
+* viewerId (String)
+	リクエストのopensocial_viewer_id
+
+* deviceType (int)
+	|defDevice| |defId|  1: PC browser, 2: Android
+
+* paymentId (String)
+	|defPayment| |defId| 
+
+
+Returns
+==========
+
+* status (bool)
+    APIの成否
+
+* code (int)
+   APIの実行結果コード。成功時200、エラー時400
+
+* errorMessage (String)
+    API失敗時のエラーメッセージ
+
+* gameId (int)
+    構造を共通化するためのダミー
+
+* playerId (String)
+    構造を共通化するためのダミー
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        appId: '12345',
+        appUrl: 'http://example.jp/gadget.xml',
+        ownerId: '12345678',
+        viewerId: '12345678',
+        deviceType:1,
+        paymentId: '01234-567890-12....'
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        isValid: true,
+        code:200
+    }
+
+
+Errors
+==========
+
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    400,	マスタ設定が不足している等、処理が継続できない
+
+
+
+

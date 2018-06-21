@@ -1,0 +1,28 @@
+.. include:: ../../definition.txt
+
+jp.atomitech.kiq.plugin.sns
+
+====================
+SnsRankingInfo
+====================
+
+|defRanking| で取得結果に含まれる SnsRankingInfo の内容を格納します
+
+Parameters
+====================
+
+* rank (int)
+    順位
+* score (int)
+    スコア
+* characterData (string)
+    キャラクタデータ
+* snsType (optional,common.SnsType)
+    SNS 種別
+* snsId (optional,string)
+    SNS ID
+* snsProfile (optional,string)
+    SNS Profile
+
+
+

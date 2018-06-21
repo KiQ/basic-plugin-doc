@@ -1,0 +1,97 @@
+.. include:: ../../../definition.txt
+
+====================
+gachaExecute
+====================
+
+|defGacha| マスタに定義した、プレイヤー |defInventory| にある |defContent| を消費して代わりに |defContent| 付与を行うAPIです。
+
+.. code-block:: js
+
+    gachaExecute(GachaExecuteRequest) => GachaExecuteResult
+
+
+Requests
+==========
+
+* gachaId (int)
+	実行する |defGacha| の |defId|
+
+	備考 : 実行時の |defInventory| の消費方法は :doc:`../inventory_rule` を参照
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* updateInventoryElementList (list<:doc:`../../types/InventoryElement`>)
+	更新された |defInventory| のリスト
+
+	備考 : 更新がなかった場合、空のリストを返す
+
+* deleteInventoryElementList (list<:doc:`../../types/InventoryElement`>)
+	削除された |defInventory| のリスト
+
+	備考 : 削除されなかった場合、空のリストを返す
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        gachaId: 1
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        updateInventoryElementList: [
+            {
+                inventoryId: 1000,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 5,
+                description: '',
+                isPayment: false
+            },
+            {
+                inventoryId: 2000,
+                contentId: 20,
+                contentType: 'type-02',
+                amount: 9,
+                description: '',
+                isPayment: false
+            }
+        ],
+        deleteInventoryElementList: [
+            {
+                inventoryId: 3000,
+                contentId: 30,
+                contentType: 'type-03',
+                amount: 1,
+                description: '',
+                isPayment: false
+            }
+        ]
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20400,不正な ``gachaId`` がリクエストされました
+    20401,抽選対象が存在していません
+    20402,有効期間外の ``gachaId`` がリクエストされました
+    20201,消費する |defContent| が |defInventory| に存在していません

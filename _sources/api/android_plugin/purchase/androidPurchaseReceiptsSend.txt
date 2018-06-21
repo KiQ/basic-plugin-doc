@@ -1,0 +1,114 @@
+.. include:: ../../../definition.txt
+
+==========
+androidPurchaseReceiptsSend
+==========
+
+Android で課金した際に、 :doc:`../../../master/iab_sales_item` に定義した |defContent| を付与するAPIです。
+
+アプリからGoogle Playにリクエストするとき、developer payloadに |defCcUuid| を指定します。
+
+レシートの検証に使用する公開鍵は  :doc:`../../../master/iab_conf`  に設定します。
+
+複数回、同じ決済 |defId| のレシートを送付した場合は、最初の1回のみ付与します。
+
+
+.. code-block:: js
+
+    androidPurchaseReceiptsSend(PurchaseReceiptsSendRequest) => PurchaseReceiptsSendResult
+
+Requests
+==========
+
+* receipt (String)
+    Unity IAPプラグインの提供するレシートの文字列
+
+* price (double)
+    ストアでの販売価格
+
+* countryCode (String)
+    国コード
+
+* currencyCode (String)
+    通貨コード
+
+
+Returns
+==========
+
+* success (bool)
+    APIの成否
+
+* updateInventoryElementList ( List< :doc:`../../types/InventoryElement` > )
+    更新された |defInventory| のリスト
+
+    備考 : 更新された :doc:`../../types/InventoryElement` がない時、空のリストを返す
+
+* addPresentList ( List< :doc:`../../types/Present` > )
+    付与した  |defPresent|  のリスト
+
+    備考 : 付与された  :doc:`../../types/Present`  がない場合、空のリストを返す
+
+* errorCode (int)
+    API失敗時のエラーコード
+
+* errorMessage (String)
+    API失敗時のエラーメッセージ
+
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        receipt: ' (レシート) ',
+        price: 120.0,
+        countryCode:'jp',
+        currencyCode:'yen'
+    }
+
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        updateInventoryElementList: [
+            {
+                inventoryId: 1000,
+                contentId: 10,
+                contentType: 'type-01',
+                amount: 5,
+                description: '',
+                "createDate":"1483010270753"
+            }
+        ],
+        addPresentList: []
+    }
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    50000,	レシートの検証に失敗
+    50001,	developer payloadの |defCcUuid| が不一致
+    50002,	DB更新エラー。要リトライ
+    50003,	国コードが不正
+    50004,	通貨コードが不正
+    50005,	Androidの課金マスタ設定がない
+    50006,	公開鍵の設定が異常
+    50007,  商品 |defId| が一致しない
+
+
+
+
+

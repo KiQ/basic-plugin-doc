@@ -1,0 +1,70 @@
+.. include:: ../../../definition.txt
+
+====================
+objectStorageSet
+====================
+
+|defObjectStorage| にキーとバリューでデータを保存するAPIです。
+
+objectStorageAddとは異なり、リクエストされた ``key`` がすでに保存済みの場合でも、 ``value`` は上書き保存されます。
+
+.. code-block:: js
+
+    objectStorageSet(ObjectStorageSetRequest) => ObjectStorageSetResult
+
+Requests
+==========
+
+* key (string)
+    |defObjectStorage| に保存するプレイヤー毎に一意なデータを示すキー
+
+* value (binary)
+    |defObjectStorage| に保存するデータ
+
+* hash (binary)
+    ``value`` のハッシュ値
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* value (optional, binary)
+	指定したキーのデータ
+
+* hash (optional, binary)
+	``value`` ハッシュ値
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        key: 'key-A',
+        value:, /* binary */
+        hash: /* binary */
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true
+    }
+
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20802,``hash`` の確認に失敗しました

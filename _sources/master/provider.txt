@@ -1,0 +1,92 @@
+.. include:: ../definition.txt
+
+==============================
+|defProvider| マスタ
+==============================
+
+|defProvider| マスタでは、一定時間毎に指定した |defContent| の増加を行うための定義を行います。
+
+以下にマスタの持つ属性値を記載します。
+
+|defProvider| マスタの持つ属性値
+=============================================
+
+* data_version
+    定義を行うマスタのバージョン
+
+    型 : 文字列
+
+    必須 : yes
+
+    入力可能文字数 : 1-32
+
+    備考 : |defDataVersion| については :doc:`data_version` を参照
+
+* provider_config_id
+    |defProvider| 設定の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-9999
+
+* content_id
+    増加を行う |defContent| の |defId|
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* add_amount
+    対象 |defContent| の増加量
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+* init_amount
+    |defProvider| 開始時のポイント初期値
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999
+
+    備考 : ``max_point`` を超えない範囲
+
+* max_amount
+    |defProvider| がカウントするポイントの最大値
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 0-99999( |defContent| の ``max_amount`` を超えない範囲)
+
+* count_interval
+    1ポイントカウントするのにかかる秒数
+
+    型 : 整数値
+
+    必須 : yes
+
+    範囲 : 1-99999
+
+--------------------------------------------------
+|defProvider| のひな形
+--------------------------------------------------
+
+:download:`Download: Providerマスタひな形<./resources/mst_data/plain_example/provider.xlsx>`
+
+「スタミナ」が一定時間毎に増加する |defProvider| の設定例
+------------------------------------------------------------
+
+「スタミナ」の最大値が4ずつ増加し、5分に1回復するスタミナを表現したマスタ設定例です。
+
+:download:`Download: Providerの設定例1<./resources/mst_data/recipe/stamina_to_recover_in_5_minutes/stamina_to_recover_in_5_minutes.zip>`

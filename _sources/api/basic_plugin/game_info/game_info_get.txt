@@ -1,0 +1,61 @@
+.. include:: ../../../definition.txt
+
+====================
+gameInfoGet
+====================
+
+指定した ``key`` に一致する |defGameInfo| を取得するAPIです。
+
+.. code-block:: js
+
+    gameInfoGet(GameInfoGetRequest) => GameInfoGetResult
+
+Requests
+==========
+
+* key (string)
+	取得する |defGameInfo| のキー
+
+Returns
+==========
+
+* success (bool)
+	APIの成否
+
+* gameInfo (:doc:`../../types/GameInfo`)
+	取得したゲーム情報
+
+Examples
+==========
+
+リクエストの例
+--------------------
+
+.. code-block:: js
+
+    {
+        key: 'data_version'
+    }
+
+レスポンスの例
+--------------------
+
+.. code-block:: js
+
+    {
+        success: true,
+        gameInfo: {
+            key: 'data_version',
+            value: 'versionA'
+        }
+    }
+
+
+Errors
+==========
+
+.. csv-table::
+    :header: エラーコード, 説明
+    :widths: 3, 10
+
+    20100, |defGameInfo| 内に ``key`` が見つかりませんでした
